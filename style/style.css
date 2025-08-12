@@ -1126,3 +1126,94 @@ background: #1f1f1f;
   .mockup-wrap{ height:350px; }
   .social-text{ font-size:13px; }
 }
+
+
+/* ======================================
+   OUR COLLABORATIONS (single image)
+   ====================================== */
+.collab-section{
+  background:#1f1f1f;           /* dark like your reference */
+  color:#fff;
+  padding:90px 6% 110px;
+}
+
+.collab-inner{
+  max-width:1320px;
+  margin:0 auto;
+}
+
+/* Title */
+.collab-title{
+  margin:0 0 36px 0;
+  text-align:center;
+  font-weight:600;
+  letter-spacing:.04em;
+  line-height:1.1;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size:clamp(36px, 4.6vw, 64px);
+}
+.collab-title span{ font-style:italic; font-weight:500; }
+
+/* Image wrapper */
+.collab-figure{
+  margin:0 auto;
+  max-width:1200px;             /* keeps margins on huge screens */
+}
+.collab-img{
+  display:block;
+  width:100%;
+  height:auto;
+ 
+}
+
+/* ======================================
+   RESPONSIVE BREAKPOINTS
+   ====================================== */
+
+/* ≥1400px (very large desktops) */
+@media (min-width:1400px){
+  .collab-section{ padding:110px 6% 130px; }
+  .collab-figure{ max-width:1280px; }
+}
+
+/* 1024–1399 (laptops) */
+@media (max-width:1399.98px) and (min-width:1024px){
+  .collab-section{ padding:90px 5% 110px; }
+  .collab-figure{ max-width:1120px; }
+}
+
+/* 900–1023 (tablet landscape / small laptops) */
+@media (max-width:1023.98px) and (min-width:900px){
+  .collab-section{ padding:80px 5% 96px; }
+  .collab-figure{ max-width:980px; }
+}
+
+/* 768–899 (tablet portrait) */
+@media (max-width:899.98px) and (min-width:768px){
+  .collab-section{ padding:70px 5% 88px; }
+  .collab-title{ font-size:clamp(34px, 5.8vw, 52px); }
+  .collab-figure{ max-width:860px; }
+}
+
+/* ≤767 (mobile stack) */
+@media (max-width:767.98px){
+  .collab-section{ padding:56px 5% 72px; }
+  .collab-title{ margin-bottom:22px; }
+  .collab-figure{ max-width:640px; }
+}
+
+/* ≤575 (small phones incl. older iPhones) */
+@media (max-width:575.98px){
+  .collab-section{ padding:48px 4% 60px; }
+  .collab-title{ font-size:32px; letter-spacing:.03em; }
+}
+
+/* ≤390 (iPhone 12/13/14/15, SE2+) */
+@media (max-width:390.98px){
+  .collab-title{ font-size:28px; }
+}
+
+/* ≤360 (very small / Galaxy S9+) */
+@media (max-width:359.98px){
+  .collab-title{ font-size:26px; }
+}

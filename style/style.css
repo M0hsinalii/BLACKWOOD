@@ -776,3 +776,214 @@ body{
   .prod-copy h2{ font-size:34px; }
   .prod-copy p{ font-size:14.5px; }
 }
+
+
+.branding-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+background: #1f1f1f;
+  padding: 60px 5%;
+  flex-wrap: wrap;
+}
+.branding-content h2 {
+    font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: .06em;
+  font-size: clamp(40px, 5.4vw, 84px);
+  line-height: 1.05;
+  margin: 0 0 24px 0;
+}
+.branding-content {
+  flex: 1 1 400px;
+  max-width: 500px;
+  color: #fff;
+  padding-bottom: 5%;
+}
+
+.branding-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.branding-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.branding-btn {
+  display: inline-block;
+  border: 1px solid #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-decoration: none;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.branding-btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.branding-images {
+  flex: 1 1 500px;
+  position: relative;
+  min-height: 300px;
+}
+
+.branding-images img {
+  position: absolute;
+  max-width: 100%;
+  height: auto;
+}
+
+.laptop {
+  width: 75%;
+  top: 0;
+  left: 25%;
+  z-index: 1;
+}
+
+.tablet {
+  width: 40%;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.phone {
+  width: 35%;
+  bottom: -10px;
+  left: 0;
+  z-index: 3;
+}
+
+/* ===== Large Desktop (≥1400px) ===== */
+@media (min-width:1400px) {
+  .branding-content h2 {
+    font-size: clamp(60px, 4.5vw, 84px);
+  }
+  .branding-text {
+    font-size: 18px;
+  }
+  .laptop { width: 70%; left: 28%; }
+  .tablet { width: 38%; }
+  .phone { width: 32%; }
+}
+
+/* ===== Laptops (1024px–1399px) ===== */
+@media (max-width:1399.98px) and (min-width:1024px) {
+  .branding-content h2 {
+    font-size: clamp(50px, 5vw, 72px);
+  }
+  .branding-text {
+    font-size: 16px;
+  }
+  .laptop { width: 72%; left: 26%; }
+  .tablet { width: 38%; }
+  .phone { width: 33%; }
+}
+
+/* ===== Tablets (768px–1023px) ===== */
+@media (max-width:1023.98px) and (min-width:768px) {
+  .branding-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  .branding-images {
+    margin-top: 40px;
+    min-height: 250px;
+  }
+  .laptop {
+    position: relative;
+    width: 85%;
+    left: auto;
+  }
+  .tablet {
+    position: relative;
+    width: 50%;
+    margin-top: 20px;
+    right: auto;
+  }
+  .phone {
+    position: relative;
+    width: 45%;
+    margin-top: 20px;
+    left: auto;
+  }
+}
+
+/* ===== Small Mobile (≤575.98px) ===== */
+@media (max-width:575.98px) {
+  .branding-content h2 {
+    font-size: clamp(34px, 7vw, 48px);
+  }
+  .branding-text {
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .branding-btn {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  .laptop {
+    width: 90%;
+    left: auto;
+  }
+  .tablet {
+    width: 65%;
+    margin-top: 15px;
+  }
+  .phone {
+    width: 55%;
+    margin-top: 15px;
+  }
+}
+
+/* ===== iPhone 13 Pro Portrait (390px) ===== */
+@media (max-width:390px) and (orientation:portrait) {
+  .branding-content h2 {
+    font-size: clamp(28px, 6vw, 38px);
+  }
+  .branding-text {
+    font-size: 14px;
+  }
+  .branding-btn {
+    padding: 7px 14px;
+    font-size: 12px;
+  }
+  .laptop {
+    width: 95%;
+  }
+  .tablet {
+    width: 70%;
+  }
+  .phone {
+    width: 60%;
+  }
+}
+
+/* ===== iPhone 13 Pro Landscape (844px) ===== */
+@media (max-width:844px) and (orientation:landscape) {
+  .branding-content h2 {
+    font-size: clamp(28px, 5vw, 40px);
+  }
+  .branding-text {
+    font-size: 14px;
+  }
+  .laptop {
+    width: 85%;
+  }
+  .tablet {
+    width: 60%;
+  }
+  .phone {
+    width: 50%;
+  }
+}
+

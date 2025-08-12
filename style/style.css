@@ -354,7 +354,6 @@ body{
   .hero{ height:64vh; }
   .hero-cta{ padding:9px 12px; border-radius:9px; }
   .hero-logo img{ height:38px; }
-  
 
   .spec-title{ font-size:clamp(26px, 7vw, 34px); }
   .spec-media{ border-radius:12px; }
@@ -366,6 +365,21 @@ body{
   .prod-img--bottom{ left:64px; top:96px; width:160px; height:105px; border-radius:12px; }
   .btn-ghost{ padding:9px 18px; border-radius:9px; }
 }
+
+/* iPhone 13 Pro (portrait, 390px width) */
+@media (max-width:390px) and (orientation:portrait){
+  .hero-logo img{
+    height:34px; /* slightly smaller to fit the frame better */
+  }
+}
+
+/* iPhone 13 Pro (landscape, 844px width) */
+@media (max-width:844px) and (orientation:landscape){
+  .hero-logo img{
+    height:34px; /* consistent in landscape */
+  }
+}
+
 
 /* Ultra-small safety */
 @media (max-width:360px){

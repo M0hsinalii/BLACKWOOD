@@ -354,7 +354,6 @@ body{
   .hero{ height:64vh; }
   .hero-cta{ padding:9px 12px; border-radius:9px; }
   .hero-logo img{ height:38px; }
-  .hero-logo img{ width:90%; }
 
   .spec-title{ font-size:clamp(26px, 7vw, 34px); }
   .spec-media{ border-radius:12px; }

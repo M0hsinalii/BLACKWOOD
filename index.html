@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BlackWood</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style/style.css" />
+
+    <script src="/js/index.js" defer></script>
+  </head>
+  <body>
+    <!-- Top Navbar (fixed) -->
+    <header id="topbar" class="topbar">
+      <div class="topbar-inner">
+        <input id="nav-toggle" type="checkbox" class="nav-toggle" aria-label="Toggle menu" />
+        <label for="nav-toggle" class="hamburger" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </label>
+
+        <nav class="menu" aria-label="Primary">
+          <a class="active" href="#">Home</a>
+          <a href="#specialise">Production</a>
+          <a href="#specialise">Branding</a>
+          <a href="#specialise">Social</a>
+          <a href="#contact">Enquire Us</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Intro">
+      <video
+        id="heroVideo"
+        class="bg-video"
+        src="/images/bsu intro.mp4"
+        poster="/images/hero-poster.jpg"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      ></video>
+
+      <a class="hero-logo" href="#" aria-label="BlackWood home">
+        <img src="/images/BW_Logo_Horizontal_White.png" alt="BlackWood logo" />
+      </a>
+
+      <a class="hero-cta" href="#contact">WORK WITH US</a>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about-slab" id="about" aria-label="About BlackWood">
+      <div class="about-wrap">
+        <p class="about-copy anim-item">
+          We don’t just create — we ignite. E11 is your all-in-one creative
+          partner, bringing bold ideas to life through branding, production,
+          social media, and more. Our passionate crew of creatives blends
+          big-brand experience with a fresh, agile approach to deliver content
+          that captivates, connects, and drives real results. With E11, your
+          vision becomes brand magic.
+        </p>
+
+        <span class="about-divider anim-item" aria-hidden="true"></span>
+        <div class="about-mark anim-item" aria-hidden="true">E11.</div>
+      </div>
+    </section>
+
+    <!-- SPECIALISE -->
+    <section class="specialise" id="specialise" aria-label="What we specialise in">
+      <div class="spec-wrap">
+        <header class="spec-header">
+          <span class="spec-rule spec-rule--top" aria-hidden="true"></span>
+          <h2 class="spec-title anim-spec">We specialise in</h2>
+          <span class="spec-rule spec-rule--btm" aria-hidden="true"></span>
+        </header>
+
+        <div class="spec-grid">
+          <!-- Item 1 -->
+          <article class="spec-item anim-spec" data-variant="prod">
+            <h3 class="spec-kicker">
+              <span>PRODUCTION</span>
+              <svg viewBox="0 0 24 24" class="kicker-arrow" aria-hidden="true">
+                <path d="M7 12h10M13 8l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </h3>
+            <p class="spec-desc">
+              Cinematic Video & Storytelling, Event Coverage, Motion Graphics &
+              Post-Production.
+            </p>
+            <figure class="spec-media">
+              <img src="/images/burj.jpeg" alt="Production work sample" />
+            </figure>
+          </article>
+
+          <!-- Item 2 -->
+          <article class="spec-item anim-spec" data-variant="brand">
+            <h3 class="spec-kicker">
+              <span>BRANDING</span>
+              <svg viewBox="0 0 24 24" class="kicker-arrow" aria-hidden="true">
+                <path d="M7 12h10M13 8l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </h3>
+            <p class="spec-desc">
+              Brand Strategy & Identity, Logo & Visual Design, Website & Asset
+              Creation.
+            </p>
+            <figure class="spec-media">
+              <img src="/images/burj.jpeg" alt="Branding work sample" />
+            </figure>
+          </article>
+
+          <!-- Item 3 -->
+          <article class="spec-item anim-spec" data-variant="social">
+            <h3 class="spec-kicker">
+              <span>SOCIAL</span>
+              <svg viewBox="0 0 24 24" class="kicker-arrow" aria-hidden="true">
+                <path d="M7 12h10M13 8l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </h3>
+            <p class="spec-desc">
+              Content Creation & Design, Influencer & Paid Campaigns, Grid
+              Planning & Brand Aesthetic.
+            </p>
+            <figure class="spec-media">
+              <img src="/images/burj.jpeg" alt="Social content sample" />
+            </figure>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="production">
+  <div class="prod-wrap">
+    <!-- Left: Staggered images -->
+    <div class="image-stack">
+      <img class="img-top"
+           src="/images/burj.jpeg"
+           alt="Spa treatment">
+      <img class="img-bottom"
+           src="/images/burj.jpeg"
+           alt="Beach view">
+    </div>
+
+    <!-- Right: Copy -->
+    <div class="prod-copy">
+      <h2>PRODUCTION</h2>
+      <p>
+        Unleash your brand’s full potential. From strategy to stunning visual identities,
+        we craft brands that stand out and connect deeply. Whether you're starting fresh
+        or reimagining your look, we build foundations that last.
+      </p>
+      <a class="prod-btn" href="#">DISCOVER MORE</a>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Contact anchor target (for CTA) -->
+    <div id="contact" style="height:1px;"></div>
+  </body>
+</html>

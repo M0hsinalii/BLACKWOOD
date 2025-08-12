@@ -1,0 +1,763 @@
+/* =======================================================
+   Reset + Global Vars
+   ======================================================= */
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; height:100%; }
+img{ max-width:100%; height:auto; display:block; }
+
+:root{
+  --white:#fff;
+  --black:#000;
+  --stroke:rgba(0,0,0,.35);
+  --hamburger-grey:#9aa1a9;
+  --header-h:56px;              /* fixed topbar height */
+  --nav-h:62px;                 /* secondary navbar height (tweaked in breakpoints) */
+
+  --spec-bg:#f8f5ee;
+  --spec-rule:#1f1f1f;
+  --prod:#e0a129;
+  --brand:#93a8cf;
+  --social:#f3a892;
+}
+
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--black);
+  background:var(--white);
+  line-height:1.45;
+  padding-top:var(--header-h);      /* offset for fixed header */
+  overflow-x:hidden;                /* prevent sideways scroll on mobile */
+}
+
+/* =======================================================
+   Topbar (fixed, from first CSS)
+   ======================================================= */
+.topbar{
+  position:fixed; top:0; left:0; right:0;
+  height:var(--header-h);
+  z-index:100; /* header above everything */
+  background:linear-gradient(to bottom, rgba(255,255,255,.9), rgba(255,255,255,.8), rgba(255,255,255,0));
+  backdrop-filter:saturate(140%) blur(2px);
+  transition:background .2s ease, box-shadow .2s ease;
+}
+.topbar.scrolled{ background:#fff; box-shadow:0 6px 18px rgba(0,0,0,.1); }
+.topbar-inner{
+  max-width:1200px; margin:0 auto; padding:10px 14px;
+  min-height:var(--header-h);
+  display:flex; align-items:center; justify-content:flex-end; gap:16px;
+}
+
+/* ===== Menu (first CSS) ===== */
+.menu{ display:flex; gap:24px; }
+.menu a{ color:#111; text-decoration:none; font-weight:500; opacity:.9; }
+.menu a:hover, .menu a.active{ opacity:1; }
+
+/* ===== Hamburger (first CSS) ===== */
+.nav-toggle{ display:none; }
+.hamburger{
+  display:none; width:20px; height:16px;
+  align-items:center; justify-content:center;
+  cursor:pointer; margin-left:auto; background:transparent; border:0; padding:0; line-height:0;
+  z-index:101; /* above the overlay menu */
+}
+.hamburger span{
+  display:block; width:100%; height:2px; background:var(--hamburger-grey);
+  border-radius:1px; transition:transform .25s ease, opacity .25s ease;
+}
+
+/* =======================================================
+   SECOND NAV (from second CSS, mobile-first)
+   ======================================================= */
+.nav{
+  width:100%;
+  background:#fff;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+.nav__inner{
+  max-width:1200px;
+  margin:0 auto;
+  padding:14px 20px;
+  display:flex; align-items:center; gap:16px;
+}
+.nav__links{ display:none; gap:26px; }
+.nav__links a{ color:#0d0d0d; text-decoration:none; font-weight:500; }
+.nav__links a.active, .nav__links a:hover{ opacity:.85; }
+.nav__spacer{ flex:1 1 auto; }
+
+.nav__toggle{
+  display:block; width:40px; height:36px;
+  background:none; border:0; padding:0;
+}
+.nav__toggle span{
+  display:block; height:2px; background:#0d0d0d; margin:7px 0;
+  transition:transform .25s, opacity .25s;
+}
+.nav__toggle.open span:nth-child(1){ transform:translateY(9px) rotate(45deg); }
+.nav__toggle.open span:nth-child(2){ opacity:0; }
+.nav__toggle.open span:nth-child(3){ transform:translateY(-9px) rotate(-45deg); }
+
+.nav__drawer{
+  display:none; flex-direction:column; gap:14px;
+  padding:10px 20px 16px;
+  background:#fff;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+.nav__drawer a{ color:#0d0d0d; text-decoration:none; font-weight:500; }
+.nav__drawer.open{ display:flex; }
+
+/* =======================================================
+   HERO (merged)
+   ======================================================= */
+.hero{ position:relative; width:100%; height:clamp(62vh,80vh,88vh); overflow:hidden; }
+
+/* video elements */
+.bg-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+.hero__container{
+  position:relative; width:100%;
+  height:calc(100vh - var(--nav-h)); /* alt hero variant that starts under .nav */
+  overflow:hidden;
+}
+.hero__video{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover; object-position:center center;
+}
+
+/* overlays / logo / CTA */
+.hero-logo{ position:absolute; top:18px; left:18px; z-index:10; text-decoration:none; }
+.hero-logo img{ height:52px; width:auto; display:block; filter:drop-shadow(0 6px 28px rgba(0,0,0,.45)); }
+
+.hero-cta{
+  position:absolute; top:18px; right:18px; z-index:10;
+  padding:10px 16px; border-radius:10px;
+  border:1px solid rgba(255,255,255,.6);
+  color:#fff; text-decoration:none; font-weight:700; letter-spacing:.3px;
+  background:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+  backdrop-filter:blur(3px) saturate(140%);
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+  transition:transform .22s cubic-bezier(.2,.8,.2,1), box-shadow .22s ease, border-color .22s ease, background .22s ease;
+  text-shadow:0 1px 2px rgba(0,0,0,.35);
+  overflow:hidden;
+}
+.hero-cta::after{
+  content:""; position:absolute; inset:-2px;
+  background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,.35) 45%, rgba(255,255,255,.65) 50%, rgba(255,255,255,.35) 55%, transparent 100%);
+  transform:translateX(-120%); pointer-events:none;
+}
+.hero-cta:hover::after{ animation:cta-shine .9s ease forwards; }
+.hero-cta:hover, .hero-cta:focus-visible{
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 10px 24px rgba(0,0,0,.28);
+  border-color:rgba(255,255,255,.85);
+  background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.08));
+  outline:none;
+}
+.hero-cta:active{ transform:translateY(0) scale(.99); box-shadow:0 6px 14px rgba(0,0,0,.22); }
+@keyframes cta-shine{ 0%{transform:translateX(-120%) skewX(-12deg);} 100%{transform:translateX(120%) skewX(-12deg);} }
+@media (prefers-reduced-motion: reduce){ .hero-cta, .hero-cta::after{ transition:none!important; animation:none!important; } }
+
+/* secondary overlay system (from second CSS) */
+.hero__overlay{ position:absolute; pointer-events:none; }
+.hero__overlay--left{ top:28px; left:28px; }
+.hero__overlay--right{ top:44px; right:28px; }
+.logo-img{ width:210px; height:auto; filter:drop-shadow(0 6px 28px rgba(0,0,0,.45)); pointer-events:auto; }
+.btn-outline{
+  pointer-events:auto;
+  display:inline-block;
+  padding:10px 16px; min-width:150px;
+  border:1.5px solid #fff; color:#fff; text-decoration:none;
+  font-weight:700; letter-spacing:.5px;
+  background:rgba(0,0,0,.15); backdrop-filter:blur(2px);
+  transition:transform .15s ease, background .2s ease, border-color .2s ease;
+}
+.btn-outline:hover{ transform:translateY(-1px); background:rgba(255,255,255,.15); border-color:#fff; }
+
+/* =======================================================
+   About Slab (first CSS)
+   ======================================================= */
+.about-slab{ background:#f8f5ee; border-top:1px solid rgba(0,0,0,.04); border-bottom:1px solid rgba(0,0,0,.04); }
+.about-wrap{ max-width:840px; margin:0 auto; padding:96px 20px 140px; text-align:center; }
+
+.anim-item{ opacity:1; transform:none; filter:none; }
+.anim-item.prepare{ opacity:0; transform:translateY(6px); filter:blur(3px); }
+
+.about-copy{
+  margin:0 auto 72px;
+  max-width:720px;
+  font-size:18px;
+  line-height:1.6;
+  color:#121212;
+  position:relative;
+  will-change:transform,opacity,clip-path,filter;
+}
+.about-divider{
+  display:block;
+  width:1px;
+  height:120px;
+  background:rgba(0,0,0,.55);
+  margin:0 auto 56px;
+  transform-origin:center top;
+  will-change:transform,opacity;
+}
+.about-mark{
+  font-weight:900;
+  font-size:44px;
+  letter-spacing:.5px;
+  color:#111;
+  will-change:transform,opacity;
+}
+.about-copy.prepare.in-view{
+  animation:copy-curtain .9s cubic-bezier(.2,.8,.2,1) forwards,
+           copy-rise .7s cubic-bezier(.2,.8,.2,1) .05s forwards;
+  filter:none;
+}
+@keyframes copy-curtain{ from{clip-path:inset(0 0 0 100%);} to{clip-path:inset(0);} }
+@keyframes copy-rise{ from{opacity:0; transform:translateX(26px) translateY(6px);} to{opacity:1; transform:translateX(0) translateY(0);} }
+.about-divider.prepare.in-view{ animation:divider-draw .7s ease-out .15s forwards, divider-glow 1.4s ease .8s 2; }
+@keyframes divider-draw{ from{opacity:0; transform:scaleY(.05);} to{opacity:1; transform:scaleY(1);} }
+@keyframes divider-glow{ 0%{box-shadow:0 0 0 rgba(0,0,0,0);} 50%{box-shadow:0 0 14px rgba(0,0,0,.16);} 100%{box-shadow:0 0 0 rgba(0,0,0,0);} }
+.about-mark.prepare.in-view{ animation:mark-pop .68s cubic-bezier(.2,.9,.2,1) .28s forwards; }
+@keyframes mark-pop{ 0%{opacity:0; transform:translateY(12px) scale(.9);} 60%{opacity:1; transform:translateY(-2px) scale(1.04);} 100%{opacity:1; transform:translateY(0) scale(1);} }
+.parallax-on .about-wrap{ transform:translateY(var(--about-shift,0px)); transition:transform .06s linear; }
+
+@media (prefers-reduced-motion: reduce){
+  .anim-item, .anim-item.prepare{ opacity:1!important; transform:none!important; filter:none!important; }
+}
+
+/* =======================================================
+   Specialise (first CSS)
+   ======================================================= */
+.specialise{ background:var(--spec-bg); }
+.spec-wrap{ max-width:1200px; margin:0 auto; padding:56px 24px 88px; }
+.spec-header{ max-width:1140px; margin:0 auto 34px; }
+.spec-rule{ display:block; height:1px; background:rgba(0,0,0,.6); opacity:.85; }
+.spec-rule--top{ margin-bottom:14px; }
+.spec-rule--btm{ margin-top:16px; }
+.spec-title{
+  font-family: "Georgia", "Times New Roman", serif;
+  font-weight:400; font-style:italic;
+  font-size: clamp(28px, 5vw, 44px);
+  line-height:1.2; letter-spacing:.5px; padding-left:12px;
+}
+.spec-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 36px;
+  margin-top: 42px;
+}
+.spec-item{ display:grid; gap:16px; align-content:start; }
+.spec-kicker{ display:flex; align-items:center; gap:10px; font-size:14px; letter-spacing:.12em; font-weight:700; }
+.spec-item[data-variant="prod"] .spec-kicker{ color:var(--prod); }
+.spec-item[data-variant="brand"] .spec-kicker{ color:var(--brand); }
+.spec-item[data-variant="social"] .spec-kicker{ color:var(--social); }
+.kicker-arrow{ width:18px; height:18px; }
+.spec-desc{ font-size:16px; line-height:1.6; color:#141414; max-width:38ch; }
+.spec-media{ margin:10px 0 0; border-radius:14px; overflow:hidden; background:#ddd; aspect-ratio:4/3; box-shadow:0 10px 26px rgba(0,0,0,.14); }
+.spec-media img{ width:100%; height:100%; object-fit:cover; display:block; transform:scale(1.02); transition:transform .6s cubic-bezier(.2,.8,.2,1); }
+.spec-item:hover .spec-media img{ transform:scale(1.06); }
+
+/* =======================================================
+   Production (images left, copy right) — first CSS
+   ======================================================= */
+.production{ background:#222; color:#f5f5f5; }
+.prod-wrap{
+  max-width:1200px; margin:0 auto; padding:64px 24px 96px;
+  display:grid; grid-template-columns:1.05fr 0.95fr; gap:48px 56px; align-items:center;
+}
+.prod-media{ position:relative; display:grid; gap:56px; align-content:start; }
+.prod-img{ border-radius:14px; overflow:hidden; background:#333; box-shadow:0 14px 34px rgba(0,0,0,.35); }
+.prod-img img{ width:100%; height:100%; object-fit:cover; transform:scale(1.03); transition:transform .7s cubic-bezier(.2,.8,.2,1); }
+.prod-img:hover img{ transform:scale(1.07); }
+.prod-img--top{ width:520px; height:360px; }
+.prod-img--bottom{ width:520px; height:320px; }
+.prod-copy{ max-width:580px; justify-self:end; }
+.prod-title{
+  font-family: Georgia, "Times New Roman", serif; font-style:italic; font-weight:400; letter-spacing:.06em;
+  font-size: clamp(36px, 5vw, 64px); line-height:1.1; margin:0 0 22px; color:#fff;
+}
+.prod-desc{ margin:0 0 26px; font-size:17px; line-height:1.7; color:#e8e8e8; opacity:.95; text-align:right; }
+
+/* CTA */
+.btn-ghost{
+  display:inline-block; padding:11px 22px; border-radius:10px; border:1px solid rgba(255,186,86,.9);
+  color:#ffbb58; text-decoration:none; font-weight:700; letter-spacing:.04em; position:relative; overflow:hidden;
+  transition: transform .18s ease, box-shadow .18s ease, color .18s ease, border-color .18s ease;
+}
+.btn-ghost::before{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(255,186,86,.18), rgba(255,186,86,.07)); transform:translateY(100%); transition:transform .28s cubic-bezier(.2,.8,.2,1); }
+.btn-ghost::after{ content:""; position:absolute; top:-40%; bottom:-40%; width:28%; left:-30%; background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,.45) 50%, transparent 100%); transform: rotate(15deg) translateX(-120%); transition:transform .5s ease; }
+.btn-ghost:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.32); border-color:#ffc46d; color:#ffd289; }
+.btn-ghost:hover::before{ transform:translateY(0); }
+.btn-ghost:hover::after{ transform:rotate(15deg) translateX(320%); }
+.btn-ghost:active{ transform:translateY(0); box-shadow:0 6px 16px rgba(0,0,0,.26); }
+
+/* =======================================================
+   MEDIA QUERIES — from first CSS (max-width strategy)
+   ======================================================= */
+
+/* 992–1199px (large tablet / small desktop) */
+@media (max-width:1199.98px){
+  .spec-wrap{ padding:50px 22px 76px; }
+  .spec-grid{ gap:36px 28px; }
+
+  .prod-wrap{ gap:44px 42px; }
+  .prod-img--top{ width:480px; height:330px; }
+  .prod-img--bottom{ width:480px; height:300px; }
+}
+
+/* 768–991px (tablet) */
+@media (max-width:991.98px){
+  /* Menu still inline; section tweaks */
+  .spec-grid{ grid-template-columns:repeat(2,1fr); }
+  .spec-desc{ max-width:46ch; }
+
+  .prod-wrap{ grid-template-columns:1fr; gap:34px; }
+  .prod-copy{ justify-self:start; max-width:720px; }
+  .prod-desc{ text-align:left; }
+  .prod-media{ height:auto; display:block; }
+  .prod-img--top{ width:520px; height:340px; }
+  .prod-img--bottom{ width:520px; height:320px; margin-top:42px; }
+}
+
+/* 576–767px (large mobile) */
+@media (max-width:767.98px){
+  /* Mobile nav overlay from first CSS */
+  .hamburger{ display:flex; flex-direction:column; gap:3px; }
+  .menu{
+    position:fixed; top:calc(var(--header-h) - 4px); right:10px; left:10px;
+    background:#fff; border:1px solid rgba(0,0,0,.1); border-radius:12px;
+    display:grid; gap:10px; padding:14px;
+    opacity:0; transform:translateY(-16px); pointer-events:none; transition:.25s; z-index:100;
+  }
+  .menu a{ padding:8px 6px; color:#111; }
+  .nav-toggle:checked ~ .hamburger span:nth-child(1){ transform:translateY(5px) rotate(45deg); }
+  .nav-toggle:checked ~ .hamburger span:nth-child(2){ opacity:0; }
+  .nav-toggle:checked ~ .hamburger span:nth-child(3){ transform:translateY(-5px) rotate(-45deg); }
+  .nav-toggle:checked ~ .menu{ opacity:1; transform:translateY(0); pointer-events:auto; }
+
+  /* Specialise */
+  .spec-wrap{ padding:44px 18px 64px; }
+  .spec-grid{ grid-template-columns:1fr; gap:32px; }
+
+  /* Production — offset images like mobile mock */
+  .prod-wrap{ padding:52px 18px 72px; }
+  .prod-media{ position:relative; height:260px; }
+  .prod-img--top{ position:absolute; left:16px; top:6px; width:220px; height:150px; }
+  .prod-img--bottom{ position:absolute; left:70px; top:120px; width:260px; height:160px; }
+  .prod-title{ font-size:clamp(30px, 8vw, 44px); }
+}
+
+/* ≤575px (small mobile) */
+@media (max-width:575.98px){
+  :root{ --header-h:48px; }
+  .topbar-inner{ padding:8px 10px; }
+  .hero{ height:64vh; }
+  .hero-cta{ padding:9px 12px; border-radius:9px; }
+  .hero-logo img{ height:38px; }
+
+  .spec-title{ font-size:clamp(26px, 7vw, 34px); }
+  .spec-media{ border-radius:12px; }
+
+  /* Production tighter offsets */
+  .prod-wrap{ padding:40px 14px 60px; gap:24px; }
+  .prod-media{ height:220px; }
+  .prod-img--top{ left:16px; top:8px; width:140px; height:95px; border-radius:12px; }
+  .prod-img--bottom{ left:64px; top:96px; width:160px; height:105px; border-radius:12px; }
+  .btn-ghost{ padding:9px 18px; border-radius:9px; }
+}
+
+/* Ultra-small safety */
+@media (max-width:360px){
+  .prod-media{ height:200px; }
+  .prod-img--top{ left:12px; width:128px; height:86px; }
+  .prod-img--bottom{ left:56px; width:148px; height:98px; }
+}
+
+/* ===== Responsive: About (kept last to override) ===== */
+@media (min-width:1200px){
+  .about-wrap{ padding:110px 24px 160px; }
+  .about-copy{ font-size:19px; line-height:1.65; }
+  .about-divider{ height:140px; margin-bottom:64px; }
+  .about-mark{ font-size:48px; }
+}
+@media (max-width:1199.98px) and (min-width:720px){
+  .about-wrap{ padding:88px 24px 120px; }
+  .about-copy{ font-size:17px; line-height:1.6; margin-bottom:64px; }
+  .about-divider{ height:100px; margin-bottom:48px; }
+  .about-mark{ font-size:40px; }
+}
+@media (max-width:719.98px) and (min-width:540px){
+  .about-wrap{ padding:72px 18px 100px; }
+  .about-copy{ font-size:16px; line-height:1.55; margin-bottom:48px; }
+  .about-divider{ height:80px; margin-bottom:36px; }
+  .about-mark{ font-size:36px; }
+}
+@media (max-width:539.98px){
+  .about-wrap{ padding:64px 16px 88px; }
+  .about-copy{ font-size:15px; line-height:1.5; margin-bottom:36px; max-width:92ch; }
+  .about-divider{ height:64px; margin-bottom:24px; }
+  .about-mark{ font-size:32px; }
+}
+@media (max-width:375px){
+  .about-wrap{ padding:56px 14px 72px; }
+  .about-copy{ font-size:14.5px; margin-bottom:28px; }
+  .about-divider{ height:56px; }
+  .about-mark{ font-size:28px; }
+}
+
+/* =======================================================
+   MEDIA QUERIES — from second CSS (min-width strategy)
+   ======================================================= */
+
+/* ≥576px — large phones */
+@media (min-width:576px){
+  .hero__overlay--left{ top:30px; left:34px; }
+  .hero__overlay--right{ top:48px; right:34px; }
+  .logo-img{ width:230px; }
+}
+
+/* ≥768px — tablets */
+@media (min-width:768px){
+  :root{ --nav-h:64px; }               /* slightly taller .nav */
+  .hero__overlay--left{ top:36px; left:42px; }
+  .hero__overlay--right{ top:60px; right:42px; }
+  .logo-img{ width:300px; }
+  .btn-outline{ padding:12px 18px; min-width:170px; font-size:15px; }
+}
+
+/* ≥992px — laptops (left-aligned nav) */
+@media (min-width:992px){
+  .nav__inner{ justify-content:flex-start; }  /* content packs left */
+  .nav__links{ display:flex; }                /* show links */
+  .nav__toggle{ display:none; }               /* hide burger */
+  .nav__drawer{ display:none !important; }
+  .nav__spacer{ display:none; }
+
+  /* logo + button positions to match desktop shot */
+  .hero__overlay--left{ top:48px; left:56px; }
+  .hero__overlay--right{ top:84px; right:56px; }
+  .logo-img{ width:360px; }
+  .btn-outline{ padding:12px 20px; min-width:180px; }
+}
+
+/* ≥1200px — desktops */
+@media (min-width:1200px){
+  .nav__inner{ max-width:1200px; }
+  .hero__overlay--left{ top:56px; left:64px; }
+  .hero__overlay--right{ top:92px; right:64px; }
+  .logo-img{ width:440px; }
+  .btn-outline{ padding:14px 22px; min-width:200px; font-size:16px; }
+}
+
+/* ≥1600px — large/4K */
+@media (min-width:1600px){
+  .nav__inner{ max-width:1400px; }
+  .hero__overlay--left{ top:64px; left:72px; }
+  .hero__overlay--right{ top:100px; right:72px; }
+  .logo-img{ width:520px; }
+  .btn-outline{ padding:14px 24px; min-width:220px; font-size:18px; }
+}
+
+/* Short viewports (landscape phones/tablets) */
+@media (max-height:600px){
+  .hero__overlay--right{ top:26px; }
+  .logo-img{ width:min(36vw, 300px); }
+}
+/* =======================================================
+   ULTRA-SMALL DEVICE MEDIA QUERIES
+   For tiny screens, ~280px–320px wide
+   ======================================================= */
+
+/* ≤320px — extra small devices (older Android phones, mini displays) */
+@media (max-width:320px){
+
+  /* Root vars smaller */
+  :root{
+    --header-h:44px;
+    --nav-h:56px;
+  }
+
+  /* Topbar padding tighter */
+  .topbar-inner{ padding:6px 8px; }
+
+  /* Hamburger smaller */
+  .hamburger{ width:18px; height:14px; gap:2px; }
+  .hamburger span{ height:1.5px; }
+
+  /* Hero height & buttons smaller */
+  .hero{ height:58vh; }
+  .hero-cta{
+    padding:7px 10px; 
+    font-size:12px;
+    border-radius:7px;
+  }
+  .hero-logo img{ height:32px; }
+
+  /* Overlay elements scale down */
+  .logo-img{ width:150px; }
+  .btn-outline{ padding:8px 10px; min-width:120px; font-size:12px; }
+
+  /* Specialise grid single column */
+  .spec-wrap{ padding:38px 12px 50px; }
+  .spec-grid{ gap:24px; }
+  .spec-title{ font-size:clamp(22px, 6vw, 28px); }
+  .spec-media{ border-radius:10px; }
+
+  /* Production images tighter and stacked */
+  .prod-wrap{ padding:32px 12px 46px; gap:18px; }
+  .prod-media{ height:180px; }
+  .prod-img--top{ width:120px; height:82px; left:10px; top:4px; }
+  .prod-img--bottom{ width:140px; height:95px; left:52px; top:84px; }
+  .prod-title{ font-size:clamp(24px, 7vw, 32px); }
+  .btn-ghost{ padding:7px 14px; font-size:12px; border-radius:8px; }
+
+  /* About section tighter */
+  .about-wrap{ padding:46px 12px 60px; }
+  .about-copy{ font-size:14px; margin-bottom:24px; }
+  .about-divider{ height:50px; margin-bottom:20px; }
+  .about-mark{ font-size:24px; }
+}
+
+/* ≤280px — extreme small safety (e.g., folding phone small screen) */
+@media (max-width:280px){
+  .logo-img{ width:130px; }
+  .hero-cta{ padding:6px 8px; font-size:11px; }
+  .btn-outline{ padding:6px 8px; min-width:100px; font-size:11px; }
+  .prod-img--top{ width:110px; height:75px; }
+  .prod-img--bottom{ width:120px; height:82px; }
+  .about-copy{ font-size:13px; }
+}
+/* ==============================================
+   SMALLER FRAMES — iPhone SE, Galaxy S9+
+   ============================================== */
+
+/* ≤375px — iPhone SE / small devices */
+@media (max-width:375px){
+  /* Logo smaller */
+  .hero-logo img,
+  .logo-img{
+    width:140px;
+    height:auto;
+  }
+
+  /* Work With Us button smaller */
+  .btn-outline{
+    padding:8px 12px;
+    font-size:13px;
+    min-width:130px;
+    border-radius:8px;
+  }
+}
+
+/* ≤360px — Galaxy S9+ & similar */
+@media (max-width:360px){
+  /* Logo smaller */
+  .hero-logo img,
+  .logo-img{
+    width:130px;
+    height:auto;
+  }
+
+  /* Work With Us button smaller */
+  .btn-outline{
+    padding:7px 10px;
+    font-size:12px;
+    min-width:120px;
+    border-radius:7px;
+  }
+}
+
+
+.production {
+  background: #1f1f1f;
+  color: #ffffff;
+  padding: 96px 5vw;
+}
+
+.prod-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 6vw;
+  align-items: center;
+}
+
+/* Image stack (equal size images + staggered position) */
+.image-stack {
+  position: relative;
+  min-height: 500px;
+}
+
+.image-stack img {
+  display: block;
+  width: 320px;          /* SAME SIZE */
+  height: 220px;         /* SAME SIZE */
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+/* Top image (upper left) */
+.image-stack .img-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Bottom image (lower right) */
+.image-stack .img-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 120px; /* Push right for stagger effect */
+}
+
+/* Copy side */
+.prod-copy h2 {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: .06em;
+  font-size: clamp(40px, 5.4vw, 84px);
+  line-height: 1.05;
+  margin: 0 0 24px 0;
+}
+
+.prod-copy p {
+  color: #d7d7d7;
+  font-size: clamp(16px, 1.2vw, 18px);
+  line-height: 1.6;
+  max-width: 46ch;
+  margin: 0 0 32px 0;
+}
+
+.prod-btn {
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-decoration: none;
+  color: #ffffff;
+  border: 1.5px solid #d29b4b;
+  padding: 12px 22px;
+  border-radius: 2px;
+  transition: transform .18s ease, background .18s ease, color .18s ease;
+}
+
+.prod-btn:hover {
+  transform: translateY(-2px);
+  background: #d29b4b;
+  color: #1a1a1a;
+}
+/* =======================
+   DESKTOP (≥1025px)
+   Default CSS applies here, keep overlap
+   ======================= */
+/* No query needed — your base styles will handle desktop */
+
+/* =======================
+   IPAD / TABLETS (768px – 1024px)
+   Keep overlap but scale down images
+   ======================= */
+/* =========================
+   iPad / Tablets (768–1024)
+   ========================= */
+@media (min-width:768px) and (max-width:1024px){
+  /* keep two columns but give the copy a bit more room */
+  .prod-wrap{
+    grid-template-columns: 1fr 1.05fr;  /* images | text */
+    align-items: start;
+    gap: 48px;                          /* extra gutter so nothing feels cramped */
+  }
+
+  /* image stack sizing + offsets (no intrusion into the copy column) */
+  .image-stack{
+    min-height: 420px;
+  }
+  .image-stack img{
+    width: 240px;       /* smaller so right edge stays inside its column */
+    height: 170px;
+  }
+  .image-stack .img-top{
+    top: 12px;
+    left: 0;
+  }
+  .image-stack .img-bottom{
+    bottom: 36px;
+    left: 60px;         /* reduce push to the right so it won’t overlap text */
+  }
+
+  /* type scale tuned for iPad */
+  .prod-copy{
+    padding-top: 24px;  /* drops the headline down a touch for balance */
+    max-width: 440px;   /* readable line-length */
+  }
+  .prod-copy h2{
+    font-size: 52px;
+    letter-spacing: .05em;
+  }
+  .prod-copy p{
+    font-size: 15.5px;
+    line-height: 1.55;
+  }
+  .prod-btn{
+    margin-top: 8px;    /* clears the lower image visually */
+  }
+}
+
+
+/* =======================
+   MOBILE (≤767px)
+   Stack images vertically, center text
+   ======================= */
+@media (max-width:767px){
+  .prod-wrap{
+    grid-template-columns:1fr;
+    gap:40px;
+    text-align:center;
+  }
+  .image-stack{
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+  }
+  .image-stack .img-top,
+  .image-stack .img-bottom{
+    position:relative;
+    top:auto; bottom:auto; left:auto; right:auto;
+  }
+  .image-stack img{ width:320px; height:220px; }
+  .prod-copy p{ margin-left:auto; margin-right:auto; }
+  .prod-btn{ width:100%; text-align:center; }
+}
+
+/* =======================
+   GALAXY S9+ (~412px width)
+   ======================= */
+@media (max-width:412px) and (min-width:391px){
+  .production{ padding:60px 22px; }
+  .image-stack img{ width:300px; height:200px; }
+  .prod-copy h2{ font-size:40px; letter-spacing:.04em; }
+  .prod-copy p{ font-size:15.5px; }
+}
+
+/* =======================
+   IPHONE 12 PRO (~390px width)
+   ======================= */
+@media (max-width:390px) and (min-width:376px){
+  .production{ padding:56px 20px; }
+  .image-stack img{ width:292px; height:195px; }
+  .prod-copy h2{ font-size:38px; }
+  .prod-copy p{ font-size:15px; }
+}
+
+/* =======================
+   IPHONE SE (≤375px width)
+   ======================= */
+@media (max-width:375px){
+  .production{ padding:52px 18px; }
+  .image-stack img{ width:280px; height:186px; }
+  .prod-copy h2{ font-size:34px; }
+  .prod-copy p{ font-size:14.5px; }
+}

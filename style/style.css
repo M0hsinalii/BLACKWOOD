@@ -1308,6 +1308,21 @@ background: #1f1f1f;
   font-size:13px;
 }
 
+.footer-contact {
+  margin-top: 12px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.footer-contact a {
+  color: var(--text);
+  text-decoration: none;
+}
+.footer-contact a:hover {
+  text-decoration: underline;
+}
+
+
 /* ======================================
    RESPONSIVE BREAKPOINTS
    ====================================== */

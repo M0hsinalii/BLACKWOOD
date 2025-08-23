@@ -723,4 +723,112 @@ h1 {
     transform: translateX(220px) scale(0.78) translateZ(-280px);
   }
 }
+/* ====== Base / Reset ====== */
+* { box-sizing: border-box; }
+.heroVideo {
+  --bg: #282828;            /* soft beige background like the reference */
+  --radius: 14px;           /* rounded video corners */
+  --shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  --frame-h: 560px;         /* default frame height on large desktop */
+  background: var(--bg);
+  padding: 48px 24px 64px;  /* room around the frame and caption */
+}
+
+.heroVideo__wrap {
+  max-width: 1040px;        /* similar width and side margins as mock */
+  margin: 0 auto;
+  position: relative;
+}
+
+.heroVideo__frame {
+  margin: 0;
+  height: var(--frame-h);
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  background: #000;         /* safe background while loading */
+}
+
+.heroVideo__media {
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;        /* keep the tight crop like the screenshot */
+  object-position: center;  /* tweak if you need a different focus */
+}
+
+/* tiny bottom-right credit like the screenshot */
+.heroVideo__credit {
+  position: relative;
+  max-width: 1040px;
+  margin: 10px auto 0;
+  text-align: right;
+  color: #141414;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  line-height: 1.1;
+}
+.heroVideo__credit span {
+  font-size: 12px;
+  letter-spacing: .06em;
+  font-weight: 600;
+  color: #f5f5f5;
+}
+.heroVideo__credit small {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 11px;
+  opacity: .7;
+  color: #f5f5f5;
+}
+
+/* ====== Responsive Media Queries (“all frames”) ====== */
+
+/* 1440px+ (large desktops) */
+@media (min-width: 1440px) {
+  .heroVideo { --frame-h: 620px; padding: 64px 32px 72px; }
+  .heroVideo__wrap, .heroVideo__credit { max-width: 1200px; }
+}
+
+/* 1200–1439 */
+@media (max-width: 1439.98px) and (min-width: 1200px) {
+  .heroVideo { --frame-h: 580px; }
+}
+
+/* 992–1199 (laptops) */
+@media (max-width: 1199.98px) and (min-width: 992px) {
+  .heroVideo { --frame-h: 520px; }
+  .heroVideo__wrap, .heroVideo__credit { max-width: 980px; }
+}
+
+/* 768–991 (tablets landscape) */
+@media (max-width: 991.98px) and (min-width: 768px) {
+  .heroVideo { --frame-h: 460px; padding: 40px 20px 56px; }
+  .heroVideo__wrap, .heroVideo__credit { max-width: 820px; }
+}
+
+/* 576–767 (tablets portrait / large phones) */
+@media (max-width: 767.98px) and (min-width: 576px) {
+  .heroVideo { --frame-h: 380px; padding: 36px 18px 48px; }
+  .heroVideo__wrap, .heroVideo__credit { max-width: 620px; }
+  .heroVideo__credit span { font-size: 11px; }
+  .heroVideo__credit small { font-size: 10px; }
+}
+
+/* 401–575 (phones) */
+@media (max-width: 575.98px) and (min-width: 401px) {
+  .heroVideo { --frame-h: 300px; padding: 28px 14px 40px; }
+  .heroVideo__wrap, .heroVideo__credit { max-width: none; }
+  .heroVideo__frame { border-radius: 12px; }
+  .heroVideo__credit span { font-size: 10px; }
+  .heroVideo__credit small { font-size: 9.5px; }
+}
+
+/* ≤400 (small phones) */
+@media (max-width: 400px) {
+  .heroVideo { --frame-h: 240px; padding: 24px 12px 32px; }
+  .heroVideo__frame { border-radius: 10px; }
+  .heroVideo__credit span { font-size: 9.5px; }
+  .heroVideo__credit small { font-size: 9px; }
+}
 

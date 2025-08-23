@@ -726,7 +726,7 @@ h1 {
 /* ====== Base / Reset ====== */
 * { box-sizing: border-box; }
 .heroVideo {
-  --bg: #282828;            /* soft beige background like the reference */
+  --bg: #1f1f1f;            /* soft beige background like the reference */
   --radius: 14px;           /* rounded video corners */
   --shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
   --frame-h: 560px;         /* default frame height on large desktop */

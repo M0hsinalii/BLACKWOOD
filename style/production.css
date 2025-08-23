@@ -510,7 +510,7 @@ h1 {
 
 .team__card{
   position: absolute;
-  width: 280px;
+  width: 480px;
   height: 380px;
   background: #fff;
   border-radius: var(--radius);
@@ -620,7 +620,7 @@ h1 {
 @media (max-width: 480px){
   .team__title{ font-size: 3.2rem; }
   .team__carousel{ height: 400px; }
-  .team__card{ width: 180px; height: 250px; }
+  .team__card{ width: 280px; height: 250px; }
   .team__card.left-2 { transform: translateX(-220px) scale(.78) translateZ(-280px); }
   .team__card.right-2{ transform: translateX(220px)  scale(.78) translateZ(-280px); }
 }

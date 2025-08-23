@@ -186,12 +186,12 @@
   const track = root.querySelector('.team__track');
 
   const teamMembers = [
-    { name: "Emily Kim",        role: "Founder" },
-    { name: "Michael Steward",  role: "Creative Director" },
-    { name: "Emma Rodriguez",   role: "Lead Developer" },
-    { name: "Julia Gimmel",     role: "UX Designer" },
-    { name: "Lisa Anderson",    role: "Marketing Manager" },
-    { name: "James Wilson",     role: "Product Manager" }
+    { name: "PRODUCTION",        role: "BLACKWOOD" },
+    { name: "PRODUCTION",  role: "BLACKWOOD" },
+    { name: "PRODUCTION",   role: "BLACKWOOD" },
+    { name: "PRODUCTION",     role: "BLACKWOOD" },
+    { name: "PRODUCTION",    role: "BLACKWOOD" },
+    { name: "JPRODUCTION",     role: "BLACKWOOD" }
   ];
 
   let currentIndex = 0;

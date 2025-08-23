@@ -1276,25 +1276,22 @@ background: #1f1f1f;
   font-size:12.5px;
   padding:8px 0;
   position:relative;
-  transition:color .18s ease;
+  /* no transitions here */
 }
 .footer-menu a::after{
   content:"";
   position:absolute; left:0; right:0; bottom:2px;
   height:1px; background:transparent;
-  transition:background .18s ease, transform .18s ease;
-  transform:scaleX(0);
-  transform-origin:left;
+  /* no animation/transform */
 }
 .footer-menu a:hover{
   color:#fff;
 }
 .footer-menu a:hover::after{
   background:var(--stroke);
-  transform:scaleX(1);
 }
 
-/* Right side */
+/* Right side (NO animations / transforms) */
 .footer-right{
   grid-area:right;
   display:flex;
@@ -1315,11 +1312,15 @@ background: #1f1f1f;
   border:1.5px solid var(--stroke);
   border-radius:8px;
   color:var(--stroke);
-  transition:transform .18s ease, background .18s ease, color .18s ease;
+  /* removed transitions */
 }
-.soc:hover{ background:var(--stroke); color:#111; transform:translateY(-1px); }
+.soc:hover{
+  background:var(--stroke);
+  color:#111;
+  /* no transform on hover */
+}
 
-/* CTA */
+/* CTA (NO animations) */
 .btn-outline{
   display:inline-block;
   border:1.5px solid var(--stroke);
@@ -1328,9 +1329,12 @@ background: #1f1f1f;
   padding:12px 18px;
   letter-spacing:.08em;
   font-size:12.5px;
-  transition:all .2s ease;
+  /* removed transition */
 }
-.btn-outline:hover{ background:var(--stroke); color:#111; }
+.btn-outline:hover{
+  background:var(--stroke);
+  color:#111;
+}
 
 /* Bottom row */
 .footer-bottom{

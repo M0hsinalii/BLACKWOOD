@@ -169,3 +169,93 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();
+
+
+
+
+/* ===================== CAROUSEL LOGIC (scoped) ===================== */
+(() => {
+  const root = document.getElementById('our-team');
+
+  const cards = root.querySelectorAll('.team__card');
+  const dots  = root.querySelectorAll('.team__dot');
+  const nameEl = root.querySelector('.team__name');
+  const roleEl = root.querySelector('.team__role');
+  const left  = root.querySelector('.team__arrow--left');
+  const right = root.querySelector('.team__arrow--right');
+  const track = root.querySelector('.team__track');
+
+  const teamMembers = [
+    { name: "Emily Kim",        role: "Founder" },
+    { name: "Michael Steward",  role: "Creative Director" },
+    { name: "Emma Rodriguez",   role: "Lead Developer" },
+    { name: "Julia Gimmel",     role: "UX Designer" },
+    { name: "Lisa Anderson",    role: "Marketing Manager" },
+    { name: "James Wilson",     role: "Product Manager" }
+  ];
+
+  let currentIndex = 0;
+  let isAnimating  = false;
+
+  function updateCarousel(newIndex){
+    if (isAnimating) return;
+    isAnimating = true;
+
+    currentIndex = (newIndex + cards.length) % cards.length;
+
+    cards.forEach((card, i) => {
+      const offset = (i - currentIndex + cards.length) % cards.length;
+      card.classList.remove('center','left-1','left-2','right-1','right-2','hidden');
+
+      if (offset === 0) card.classList.add('center');
+      else if (offset === 1) card.classList.add('right-1');
+      else if (offset === 2) card.classList.add('right-2');
+      else if (offset === cards.length - 1) card.classList.add('left-1');
+      else if (offset === cards.length - 2) card.classList.add('left-2');
+      else card.classList.add('hidden');
+    });
+
+    dots.forEach((d,i) => {
+      d.classList.toggle('is-active', i === currentIndex);
+      d.setAttribute('aria-selected', i === currentIndex ? 'true' : 'false');
+    });
+
+    // Update text with a short fade
+    nameEl.style.opacity = roleEl.style.opacity = '0';
+    setTimeout(() => {
+      nameEl.textContent = teamMembers[currentIndex].name;
+      roleEl.textContent = teamMembers[currentIndex].role;
+      nameEl.style.opacity = roleEl.style.opacity = '1';
+    }, 250);
+
+    setTimeout(() => { isAnimating = false; }, 800);
+  }
+
+  // Nav
+  left.addEventListener('click',  () => updateCarousel(currentIndex - 1));
+  right.addEventListener('click', () => updateCarousel(currentIndex + 1));
+
+  // Click/tap cards & dots
+  cards.forEach((card, i) => card.addEventListener('click', () => updateCarousel(i)));
+  cards.forEach((card, i) => card.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); updateCarousel(i); }
+  }));
+  dots.forEach((dot, i) => dot.addEventListener('click', () => updateCarousel(i)));
+
+  // Keyboard arrows
+  root.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') updateCarousel(currentIndex - 1);
+    if (e.key === 'ArrowRight') updateCarousel(currentIndex + 1);
+  });
+
+  // Swipe on mobile (track the section only)
+  let startX = 0;
+  root.addEventListener('touchstart', (e) => { startX = e.changedTouches[0].screenX; }, {passive:true});
+  root.addEventListener('touchend',   (e) => {
+    const dx = e.changedTouches[0].screenX - startX;
+    if (Math.abs(dx) > 50) updateCarousel(currentIndex + (dx < 0 ? 1 : -1));
+  }, {passive:true});
+
+  // Init
+  updateCarousel(0);
+})();

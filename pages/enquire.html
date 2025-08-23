@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BlackWood</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style/style.css" />
+    <style>
+      /* ===== Enquire Us (white) ===== */
+      :root {
+        --page-max: 1100px;
+        --ink: #111;
+        --muted: #6f6f6f;
+        --line: #d9d9d9;
+        --accent: #000000; /* button fill */
+        --btn-ink: #ffffff;
+      }
+
+      .enquiry {
+        background: #ffffff;
+        color: var(--ink);
+        padding: clamp(72px, 10vw, 120px) 24px 90px;
+      }
+      .enquiry__wrap {
+        max-width: var(--page-max);
+        margin: 0 auto;
+      }
+      .enquiry__title {
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+        margin: 0 0 8px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-size: clamp(28px, 6vw, 56px);
+      }
+      .enquiry__rule {
+        display: inline-block;
+        width: 72px;
+        height: 4px;
+        background: var(--ink);
+        opacity: 0.25;
+        border-radius: 2px;
+        margin: 8px 0 22px;
+      }
+      .enquiry__lead {
+        margin: 0 0 28px;
+        color: var(--muted);
+        font-family: Georgia, "Times New Roman", serif;
+        font-style: italic;
+        font-size: clamp(14px, 2.2vw, 18px);
+      }
+
+      /* Form grid */
+      .enquiry__form {
+        width: 100%;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 48px;
+      }
+      .field {
+        display: flex;
+        flex-direction: column;
+      }
+      .col-2 {
+        grid-column: 1 / -1;
+      }
+
+      .label {
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      .input,
+      .textarea {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid var(--line);
+        color: var(--ink);
+        padding: 12px 0 12px;
+        font-size: 16px;
+        outline: none;
+      }
+      .input::placeholder,
+      .textarea::placeholder {
+        color: #9a9a9a;
+      }
+      .input:focus,
+      .textarea:focus {
+        border-bottom-color: #111;
+      }
+      .textarea {
+        min-height: 140px;
+        resize: vertical;
+      }
+
+      /* Divider + bottom row */
+      .form__divider {
+        height: 1px;
+        border: 0;
+        background: var(--line);
+        margin: 36px 0 22px;
+      }
+      .form__foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .form__note {
+        margin: 0;
+        color: #000000;
+        font-family: Georgia, "Times New Roman", serif;
+        font-style: italic;
+      }
+      .btn {
+        background: var(--accent);
+        color: var(--btn-ink);
+        border: 0;
+        padding: 16px 28px;
+        letter-spacing: 0.08em;
+        font-weight: 600;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+      }
+      .btn:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+      }
+
+      /* ===== Responsive (all frames) ===== */
+
+      /* ≥1440px (very large) */
+      @media (min-width: 1440px) {
+        :root {
+          --page-max: 1200px;
+        }
+      }
+
+      /* 1200–1439px */
+      @media (max-width: 1439.98px) and (min-width: 1200px) {
+        :root {
+          --page-max: 1120px;
+        }
+      }
+
+      /* 992–1199px (laptops) */
+      @media (max-width: 1199.98px) and (min-width: 992px) {
+        :root {
+          --page-max: 980px;
+        }
+      }
+
+      /* 768–991px (tablet landscape) */
+      @media (max-width: 991.98px) and (min-width: 768px) {
+        :root {
+          --page-max: 820px;
+        }
+        .grid {
+          gap: 24px 28px;
+        }
+      }
+
+      /* 576–767px (tablet portrait/large phones) */
+      @media (max-width: 767.98px) and (min-width: 576px) {
+        :root {
+          --page-max: 640px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+        .col-2 {
+          grid-column: auto;
+        }
+        .form__foot {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .btn {
+          align-self: flex-end;
+        }
+      }
+
+      /* 401–575px (phones) */
+      @media (max-width: 575.98px) and (min-width: 401px) {
+        .grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .btn {
+          width: 100%;
+        }
+        .form__foot {
+          align-items: stretch;
+        }
+      }
+
+      /* ≤400px (small phones) */
+      @media (max-width: 400px) {
+        .grid {
+          grid-template-columns: 1fr;
+          gap: 18px;
+        }
+        .btn {
+          width: 100%;
+          padding: 14px 22px;
+        }
+      }
+    </style>
+
+    <script src="/js/index.js" defer></script>
+  </head>
+  <body>
+    <!-- Top Navbar (fixed) -->
+    <header id="topbar" class="topbar">
+      <div class="topbar-inner">
+        <input
+          id="nav-toggle"
+          type="checkbox"
+          class="nav-toggle"
+          aria-label="Toggle menu"
+        />
+        <label for="nav-toggle" class="hamburger" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </label>
+
+        <nav class="menu" aria-label="Primary">
+          <a class="active" href="/index.html">Home</a>
+          <a href="/pages/production.html">Production</a>
+          <a href="/pages/Branding.html">Branding</a>
+          <a href="#specialise">Social</a>
+          <a href="/pages/enquire.html">Enquire Us</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ===== Enquire Us (White) ===== -->
+    <!-- ===== Enquire Us (EmailJS) ===== -->
+    <!-- ===== Enquire Us (EmailJS) ===== -->
+    <section id="contact" class="enquiry">
+      <div class="enquiry__wrap">
+        <h1 class="enquiry__title">ENQUIRE US</h1>
+        <span class="enquiry__rule" aria-hidden="true"></span>
+        <p class="enquiry__lead">
+          We'd love to hear about your project. Let’s create something amazing
+          together.
+        </p>
+
+        <form id="contactFormEmailJS" class="enquiry__form" novalidate>
+          <div class="grid">
+            <div class="field">
+              <label class="label" for="from_name">Name</label>
+              <input
+                class="input"
+                id="from_name"
+                name="from_name"
+                type="text"
+                placeholder="Your name"
+                required
+              />
+            </div>
+
+            <div class="field">
+              <label class="label" for="business">Business Name</label>
+              <input
+                class="input"
+                id="business"
+                name="business"
+                type="text"
+                placeholder="Your business name"
+              />
+            </div>
+
+            <div class="field col-2">
+              <label class="label" for="reply_to">Email Address</label>
+              <input
+                class="input"
+                id="reply_to"
+                name="reply_to"
+                type="email"
+                placeholder="your.email@gmail.com"
+                required
+              />
+            </div>
+
+            <div class="field col-2">
+              <label class="label" for="phone">Phone Number</label>
+              <input
+                class="input"
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="Your phone number"
+              />
+            </div>
+
+            <div class="field col-2">
+              <label class="label" for="message">Request</label>
+              <textarea
+                class="textarea"
+                id="message"
+                name="message"
+                placeholder="Tell us about your project or inquiry"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <hr class="form__divider" />
+
+          <div class="form__foot">
+            <p class="form__note">We’ll get back to you within 48 hours</p>
+            <button class="btn" type="submit" id="sendBtn">SEND MESSAGE</button>
+          </div>
+
+          <div
+            id="formStatus"
+            style="margin-top: 10px; min-height: 22px; font-size: 14px"
+          ></div>
+          <!-- Debug button (optional): sends a canned test email via EmailJS -->
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <!-- Left: Headline + Contact -->
+        <div class="footer-left">
+          <h2 class="footer-kicker">NOT JUST ANY <span>agency</span></h2>
+          <div class="footer-contact">
+            <p>
+              Phone: <a href="tel:+971586404813">+971 58 640 4813</a> |
+              <a href="tel:+971505091969">+971 50 509 1969</a>
+            </p>
+            <p>
+              Email:
+              <a href="mailto:info@blackwoodevents.com"
+                >info@blackwoodevents.com</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Socials + CTA -->
+        <div class="footer-right">
+          <div class="socials">
+            <!-- Instagram -->
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              aria-label="Instagram"
+              class="soc"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="26"
+                height="26"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="3.5"></circle>
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1.2"
+                  fill="currentColor"
+                  stroke="none"
+                ></circle>
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a
+              href="https://linkedin.com/"
+              target="_blank"
+              aria-label="LinkedIn"
+              class="soc"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="26"
+                height="26"
+                fill="currentColor"
+              >
+                <path
+                  d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.5h5v15H0v-15zM8.5 8.5h4.8v2.06h.07c.67-1.2 2.3-2.46 4.73-2.46 5.06 0 5.99 3.33 5.99 7.65V23.5h-5v-6.73c0-1.6-.03-3.66-2.23-3.66-2.23 0-2.57 1.74-2.57 3.54v6.85h-5v-15z"
+                />
+              </svg>
+            </a>
+          </div>
+
+         
+        </div>
+      </div>
+
+      <!-- Bottom row: Logo + copyright -->
+      <div class="footer-bottom">
+        <img class="footer-logo" src="/images/BW_Logo_Horizontal_White.png" />
+        <small class="copy">© 2025 by BlackWood</small>
+      </div>
+    </footer>
+
+    <!-- EmailJS SDK -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script>
+      // ===== Your EmailJS config (from your message) =====
+      const EMAILJS_PUBLIC_KEY = "lD5-YV_fIK4ow8BCn";
+      const EMAILJS_SERVICE_ID = "service_xx4fpgi";
+      const EMAILJS_TEMPLATE_ID = "template_7su1usp";
+
+      // Init
+      (function () {
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+      })();
+
+      const form = document.getElementById("contactFormEmailJS");
+      const btn = document.getElementById("sendBtn");
+      const statusEl = document.getElementById("formStatus");
+      const debugBtn = document.getElementById("debugSend");
+
+      function showOk(msg) {
+        statusEl.textContent = msg;
+        statusEl.style.color = "#0a7f2e";
+      }
+      function showErr(msg) {
+        statusEl.textContent = msg;
+        statusEl.style.color = "#b00020";
+      }
+
+      // Normal submit
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        statusEl.textContent = "";
+
+        if (
+          !form.from_name.value.trim() ||
+          !form.reply_to.value.trim() ||
+          !form.message.value.trim()
+        ) {
+          showErr("Please fill in Name, Email, and Request.");
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = "SENDING…";
+
+        const params = {
+          from_name: form.from_name.value,
+          business: form.business.value,
+          reply_to: form.reply_to.value, // used as Reply-To in the email
+          phone: form.phone.value,
+          message: form.message.value,
+          page_title: document.title,
+          submitted_at: new Date().toISOString(),
+          // If your template expects to_email, set it here (or set a static "To email" in the template settings):
+          // to_email: 'xxm0hsin28@gmail.com'
+        };
+
+        try {
+          // You can pass the public key here as 4th arg too (belt & braces):
+          await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            params,
+            EMAILJS_PUBLIC_KEY
+          );
+          form.reset();
+          showOk("Thanks! Your message has been sent.");
+        } catch (err) {
+          // Show detailed error to help you diagnose
+          showErr(
+            "EmailJS error: " +
+              (err?.text || err?.message || JSON.stringify(err))
+          );
+          console.error("EmailJS error:", err);
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "SEND MESSAGE";
+        }
+      });
+
+      // Debug button — sends canned data so you can test without form typing
+      debugBtn.addEventListener("click", async () => {
+        statusEl.textContent = "";
+        const params = {
+          from_name: "Debug User",
+          business: "BlackWood Test",
+          reply_to: "debug@example.com",
+          phone: "+971500000000",
+          message: "This is a debug message from the EmailJS test button.",
+          page_title: document.title,
+          submitted_at: new Date().toISOString(),
+          // to_email: 'xxm0hsin28@gmail.com'
+        };
+        try {
+          await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            params,
+            EMAILJS_PUBLIC_KEY
+          );
+          showOk("Debug send: success ✅ Check your inbox/spam.");
+        } catch (err) {
+          showErr(
+            "Debug send failed: " +
+              (err?.text || err?.message || JSON.stringify(err))
+          );
+          console.error("EmailJS debug error:", err);
+        }
+      });
+    </script>
+  </body>
+</html>

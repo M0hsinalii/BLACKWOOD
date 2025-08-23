@@ -11,111 +11,506 @@
     />
     <link rel="stylesheet" href="/style/style.css" />
     <style>
-    /* ===== Portfolio Strip – FULL CSS (captions center on small screens) ===== */
-* { box-sizing: border-box; }
+      /* ===== Portfolio Strip – FULL CSS (captions center on small screens) ===== */
+      * {
+        box-sizing: border-box;
+      }
 
-.workStrip{
-  --bg: #ffffff;
-  --gutter: 48px;
-  --maxw: 1040px;
-  --title: 12px;
-  --tag: 11px;
-  background: var(--bg);
-  padding: 56px 24px 72px;
-}
+      .workStrip {
+        --bg: #ffffff;
+        --gutter: 48px;
+        --maxw: 1040px;
+        --title: 12px;
+        --tag: 11px;
+        background: var(--bg);
+        padding: 56px 24px 72px;
+      }
 
-.workStrip__wrap{
-  max-width: var(--maxw);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--gutter);
-  align-items: start;
-}
+      .workStrip__wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--gutter);
+        align-items: start;
+      }
 
-.workCard{ margin: 0; }
-.workCard__link{ display:block; text-decoration:none; color:inherit; }
+      .workCard {
+        margin: 0;
+      }
+      .workCard__link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
 
-.workCard__media{
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  display: block;
-  background:#ddd;
-  box-shadow: 0 10px 28px rgba(0,0,0,.16);
-  transition: transform .35s ease, box-shadow .35s ease;
-}
-.workCard__link:hover .workCard__media{
-  transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(0,0,0,.22);
-}
+      .workCard__media {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+        object-fit: cover;
+        display: block;
+        background: #ddd;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+      }
+      .workCard__link:hover .workCard__media {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      }
 
-/* Caption default (desktop: left-aligned) */
-.workCard__caption{
-  margin-top: 12px;
-  color: #111;
-  line-height: 1.15;
-  text-align: left;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-}
-.workCard__title{
-  font-size: var(--title);
-  letter-spacing: .06em;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-.workCard__tag{
-  font-size: var(--tag);
-  opacity: .75;
-  font-style: italic;
-}
+      /* Caption default (desktop: left-aligned) */
+      .workCard__caption {
+        margin-top: 12px;
+        color: #111;
+        line-height: 1.15;
+        text-align: left;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      }
+      .workCard__title {
+        font-size: var(--title);
+        letter-spacing: 0.06em;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      .workCard__tag {
+        font-size: var(--tag);
+        opacity: 0.75;
+        font-style: italic;
+      }
 
-/* ====== Responsive ====== */
+      /* ====== Responsive ====== */
 
-/* >=1440px — very large desktop */
-@media (min-width: 1440px){
-  .workStrip{ --maxw: 1200px; --gutter: 56px; padding: 72px 32px 88px; }
-}
+      /* >=1440px — very large desktop */
+      @media (min-width: 1440px) {
+        .workStrip {
+          --maxw: 1200px;
+          --gutter: 56px;
+          padding: 72px 32px 88px;
+        }
+      }
 
-/* 1200–1439px — desktop */
-@media (max-width: 1439.98px) and (min-width: 1200px){
-  .workStrip{ --maxw: 1120px; }
-}
+      /* 1200–1439px — desktop */
+      @media (max-width: 1439.98px) and (min-width: 1200px) {
+        .workStrip {
+          --maxw: 1120px;
+        }
+      }
 
-/* 992–1199px — laptop */
-@media (max-width: 1199.98px) and (min-width: 992px){
-  .workStrip{ --maxw: 980px; --gutter: 40px; }
-}
+      /* 992–1199px — laptop */
+      @media (max-width: 1199.98px) and (min-width: 992px) {
+        .workStrip {
+          --maxw: 980px;
+          --gutter: 40px;
+        }
+      }
 
-/* 768–991px — tablet landscape: 2 columns + CENTER CAPTION */
-@media (max-width: 991.98px) and (min-width: 768px){
-  .workStrip{ --maxw: 820px; --gutter: 32px; padding: 48px 20px 64px; }
-  .workStrip__wrap{ grid-template-columns: repeat(2, 1fr); }
-  .workCard__caption{ text-align: center; }   /* ← center text */
-}
+      /* 768–991px — tablet landscape: 2 columns + CENTER CAPTION */
+      @media (max-width: 991.98px) and (min-width: 768px) {
+        .workStrip {
+          --maxw: 820px;
+          --gutter: 32px;
+          padding: 48px 20px 64px;
+        }
+        .workStrip__wrap {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .workCard__caption {
+          text-align: center;
+        } /* ← center text */
+      }
 
-/* 576–767px — tablet portrait: 2 columns + CENTER CAPTION */
-@media (max-width: 767.98px) and (min-width: 576px){
-  .workStrip{ --maxw: 640px; --gutter: 24px; padding: 44px 16px 56px; --title: 11px; --tag: 10px; }
-  .workStrip__wrap{ grid-template-columns: repeat(2, 1fr); }
-  .workCard__caption{ text-align: center; }   /* ← center text */
-}
+      /* 576–767px — tablet portrait: 2 columns + CENTER CAPTION */
+      @media (max-width: 767.98px) and (min-width: 576px) {
+        .workStrip {
+          --maxw: 640px;
+          --gutter: 24px;
+          padding: 44px 16px 56px;
+          --title: 11px;
+          --tag: 10px;
+        }
+        .workStrip__wrap {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .workCard__caption {
+          text-align: center;
+        } /* ← center text */
+      }
 
-/* 401–575px — phones: 1 column + CENTER CAPTION */
-@media (max-width: 575.98px) and (min-width: 401px){
-  .workStrip{ --maxw: none; --gutter: 18px; padding: 40px 14px 48px; --title: 11px; --tag: 9.5px; }
-  .workStrip__wrap{ grid-template-columns: 1fr; }
-  .workCard__media{ aspect-ratio: 4 / 5; }
-  .workCard__caption{ text-align: center; }   /* ← center text */
-}
+      /* 401–575px — phones: 1 column + CENTER CAPTION */
+      @media (max-width: 575.98px) and (min-width: 401px) {
+        .workStrip {
+          --maxw: none;
+          --gutter: 18px;
+          padding: 40px 14px 48px;
+          --title: 11px;
+          --tag: 9.5px;
+        }
+        .workStrip__wrap {
+          grid-template-columns: 1fr;
+        }
+        .workCard__media {
+          aspect-ratio: 4 / 5;
+        }
+        .workCard__caption {
+          text-align: center;
+        } /* ← center text */
+      }
 
-/* <=400px — small phones: 1 column + CENTER CAPTION */
-@media (max-width: 400px){
-  .workStrip{ --gutter: 16px; padding: 32px 12px 40px; --title: 10.5px; --tag: 9px; }
-  .workStrip__wrap{ grid-template-columns: 1fr; }
-  .workCard__caption{ text-align: center; }   /* ← center text */
-}
+      /* <=400px — small phones: 1 column + CENTER CAPTION */
+      @media (max-width: 400px) {
+        .workStrip {
+          --gutter: 16px;
+          padding: 32px 12px 40px;
+          --title: 10.5px;
+          --tag: 9px;
+        }
+        .workStrip__wrap {
+          grid-template-columns: 1fr;
+        }
+        .workCard__caption {
+          text-align: center;
+        } /* ← center text */
+      }
+      /* ===== Branding Split – FULL CSS with media queries ===== */
+      * {
+        box-sizing: border-box;
+      }
 
+      .brandSplit {
+        --bg: #ffffff; /* soft beige background */
+        --maxw: 1160px; /* desktop content width */
+        --gap: 56px; /* col gap */
+        --h2: 28px; /* headline size */
+        --sub: 18px; /* subtitle size */
+        --h3: 18px; /* point heading size */
+        --body: 15.5px; /* paragraph size */
+        background: var(--bg);
+        padding: 72px 24px 80px;
+        color: #0f0f0f;
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      }
+
+      .brandSplit__wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1.05fr 1fr; /* text : image */
+        gap: var(--gap);
+        align-items: start;
+      }
+
+      /* TEXT SIDE */
+      .brandSplit__headline {
+        margin: 0 0 8px;
+        font-size: var(--h2);
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+      .brandSplit__sub {
+        margin: 0 0 22px;
+        font-size: var(--sub);
+        color: #555e6a;
+      }
+
+      .brandPoint {
+        margin: 18px 0 20px;
+      }
+      .brandPoint__heading {
+        margin: 0 0 6px;
+        font-size: var(--h3);
+        font-weight: 500;
+        line-height: 1.35;
+      }
+      .brandPoint__heading strong {
+        font-weight: 700;
+      }
+      .brandPoint__desc {
+        margin: 0;
+        font-size: var(--body);
+        color: #6b7280; /* muted paragraph like the sample */
+        line-height: 1.6;
+      }
+
+      /* IMAGE SIDE */
+      .brandSplit__figure {
+        margin: 0;
+        position: relative;
+      }
+      .brandSplit__media {
+        width: 100%;
+        display: block;
+        aspect-ratio: 4 / 5; /* tall crop like your mock */
+        object-fit: cover;
+        box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+        border-radius: 2px;
+      }
+
+      /* tiny caption bottom-left */
+      .brandSplit__credit {
+        position: absolute;
+        left: 10px;
+        bottom: -28px;
+        color: #111;
+        font-size: 12px;
+        line-height: 1.1;
+      }
+      .brandSplit__credit em {
+        font-size: 11px;
+        opacity: 0.7;
+      }
+
+      /* Swatch cards (stacked along the right side of image) */
+      .swatch {
+        --chip: #000;
+        position: absolute;
+        right: 18px;
+        width: 150px;
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        background: #fff;
+      }
+      .swatch__chip {
+        height: 110px;
+        background: var(--chip);
+      }
+      .swatch__label {
+        padding: 10px 12px;
+        background: #fff;
+      }
+      .swatch__label strong {
+        display: block;
+        font-size: 12px;
+        letter-spacing: 0.06em;
+      }
+      .swatch__label small {
+        display: block;
+        font-size: 10px;
+        color: #60656c;
+      }
+
+      /* individual colors + vertical placement */
+      .swatch--graphite {
+        --chip: #2a201b;
+        top: 36px;
+      }
+      .swatch--teddy {
+        --chip: #7f4c32;
+        top: 200px;
+      }
+      .swatch--coral {
+        --chip: #d65e3a;
+        top: 372px;
+      }
+
+      /* ====== Responsive Media Queries (all frames) ====== */
+
+      /* >=1440px (very large desktop) */
+      @media (min-width: 1440px) {
+        .brandSplit {
+          --maxw: 1280px;
+          --gap: 72px;
+          --h2: 32px;
+          --sub: 19px;
+          --h3: 19px;
+        }
+        .swatch {
+          right: 24px;
+          width: 168px;
+        }
+        .swatch__chip {
+          height: 124px;
+        }
+        .swatch--teddy {
+          top: 224px;
+        }
+        .swatch--coral {
+          top: 416px;
+        }
+      }
+
+      /* 1200–1439px */
+      @media (max-width: 1439.98px) and (min-width: 1200px) {
+        .brandSplit {
+          --maxw: 1160px;
+        }
+      }
+
+      /* 992–1199px (laptops) */
+      @media (max-width: 1199.98px) and (min-width: 992px) {
+        .brandSplit {
+          --maxw: 980px;
+          --gap: 44px;
+        }
+        .swatch {
+          width: 140px;
+          right: 14px;
+        }
+        .swatch__chip {
+          height: 100px;
+        }
+        .swatch--teddy {
+          top: 188px;
+        }
+        .swatch--coral {
+          top: 344px;
+        }
+      }
+
+      /* 768–991px (tablet landscape) — stack vertically, center text */
+      @media (max-width: 991.98px) and (min-width: 768px) {
+        .brandSplit {
+          --maxw: 820px;
+          padding: 56px 20px 72px;
+        }
+        .brandSplit__wrap {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .brandSplit__text {
+          text-align: center;
+        }
+        .brandPoint__heading,
+        .brandPoint__desc {
+          text-align: center;
+        }
+        .brandSplit__figure {
+          max-width: 560px;
+          margin: 0 auto;
+        }
+        .swatch {
+          right: 10px;
+          width: 136px;
+        }
+        .swatch__chip {
+          height: 96px;
+        }
+        .swatch--teddy {
+          top: 180px;
+        }
+        .swatch--coral {
+          top: 328px;
+        }
+      }
+
+      /* 576–767px (tablet portrait / large phones) */
+      @media (max-width: 767.98px) and (min-width: 576px) {
+        .brandSplit {
+          --maxw: 640px;
+          padding: 48px 16px 64px;
+          --h2: 26px;
+          --sub: 17px;
+          --h3: 17px;
+          --body: 15px;
+        }
+        .brandSplit__wrap {
+          grid-template-columns: 1fr;
+          gap: 26px;
+        }
+        .brandSplit__text {
+          text-align: center;
+        }
+        .brandPoint__heading,
+        .brandPoint__desc {
+          text-align: center;
+        }
+        .brandSplit__figure {
+          max-width: 520px;
+          margin: 0 auto;
+        }
+        .swatch {
+          width: 128px;
+          right: 8px;
+        }
+        .swatch__chip {
+          height: 90px;
+        }
+        .swatch--teddy {
+          top: 172px;
+        }
+        .swatch--coral {
+          top: 312px;
+        }
+      }
+
+      /* 401–575px (phones) */
+      @media (max-width: 575.98px) and (min-width: 401px) {
+        .brandSplit {
+          padding: 44px 14px 56px;
+          --h2: 24px;
+          --sub: 16px;
+          --h3: 16px;
+          --body: 14.5px;
+        }
+        .brandSplit__wrap {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+        .brandSplit__text {
+          text-align: center;
+        }
+        .brandPoint__heading,
+        .brandPoint__desc {
+          text-align: center;
+        }
+        .brandSplit__figure {
+          max-width: 480px;
+          margin: 0 auto;
+        }
+        .swatch {
+          width: 120px;
+          right: 6px;
+        }
+        .swatch__chip {
+          height: 84px;
+        }
+        .swatch--teddy {
+          top: 166px;
+        }
+        .swatch--coral {
+          top: 300px;
+        }
+      }
+
+      /* <=400px (small phones) */
+      @media (max-width: 400px) {
+        .brandSplit {
+          padding: 36px 12px 48px;
+          --h2: 22px;
+          --sub: 15px;
+          --h3: 15px;
+          --body: 14px;
+        }
+        .brandSplit__wrap {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .brandSplit__text {
+          text-align: center;
+        }
+        .brandPoint__heading,
+        .brandPoint__desc {
+          text-align: center;
+        }
+        .brandSplit__figure {
+          max-width: 440px;
+          margin: 0 auto;
+        }
+        .swatch {
+          width: 112px;
+          right: 6px;
+        }
+        .swatch__chip {
+          height: 78px;
+        }
+        .swatch--teddy {
+          top: 158px;
+        }
+        .swatch--coral {
+          top: 288px;
+        }
+      }
     </style>
 
     <script src="/js/index.js" defer></script>
@@ -207,7 +602,6 @@
               replace
               --
             />
-          
           </a>
           <figcaption class="workCard__caption">
             <span class="workCard__title">DECOR ONE</span><br />
@@ -218,8 +612,13 @@
         <!-- Card 2 -->
         <figure class="workCard">
           <a class="workCard__link" href="#">
-            <img class="workCard__media" src="/images/01.webp" <!-- replace -- />
-          
+            <img
+              class="workCard__media"
+              src="/images/01.webp"
+              <!--
+              replace
+              --
+            />
           </a>
           <figcaption class="workCard__caption">
             <span class="workCard__title">LINCOLN</span><br />
@@ -237,7 +636,6 @@
               replace
               --
             />
-          
           </a>
           <figcaption class="workCard__caption">
             <span class="workCard__title">BANYAN TREE DUBAI</span><br />
@@ -246,5 +644,175 @@
         </figure>
       </div>
     </section>
+
+    <!-- ===== Branding Split Section ===== -->
+    <section
+      class="brandSplit"
+      aria-label="Branding – Crafting identities that endure"
+    >
+      <div class="brandSplit__wrap">
+        <!-- TEXT -->
+        <div class="brandSplit__text">
+          <h2 class="brandSplit__headline">Branding</h2>
+          <p class="brandSplit__sub">Crafting identities that endure.</p>
+
+          <div class="brandPoint">
+            <h3 class="brandPoint__heading">
+              <strong>Brand Strategy &amp; Identity</strong> — Define your
+              brand’s essence with a strategy that sets you apart and a visual
+              identity that speaks volumes.
+            </h3>
+            <p class="brandPoint__desc">
+              From bespoke concepts to full-scale positioning, we ensure your
+              brand resonates and stands out.
+            </p>
+          </div>
+
+          <div class="brandPoint">
+            <h3 class="brandPoint__heading">
+              <strong>Logo &amp; Visual Design</strong> — From logos to
+              comprehensive style guides, we create cohesive visuals that make
+              your brand instantly recognizable.
+            </h3>
+            <p class="brandPoint__desc">
+              Clients like LINCOLN, EDM, and Banyan Tree Dubai trust us to
+              deliver iconic design.
+            </p>
+          </div>
+
+          <div class="brandPoint">
+            <h3 class="brandPoint__heading">
+              <strong>Website &amp; Asset Creation</strong> — Build a digital
+              presence that’s sleek, intuitive, and true to your brand’s
+              personality.
+            </h3>
+            <p class="brandPoint__desc">
+              Every asset — from websites to marketing materials — is crafted to
+              reinforce your brand identity and captivate your audience.
+            </p>
+          </div>
+        </div>
+
+        <!-- IMAGE + SWATCHES -->
+        <figure class="brandSplit__figure">
+          <img
+            class="brandSplit__media"
+            src="/images/06.webp"
+            <!--
+            replace
+            --
+          />
+
+          <!-- Swatches -->
+          <div class="swatch swatch--graphite">
+            <div class="swatch__chip"></div>
+            <div class="swatch__label">
+              <strong>GRAPHITE</strong>
+              <small>#2A201B</small>
+            </div>
+          </div>
+
+          <div class="swatch swatch--teddy">
+            <div class="swatch__chip"></div>
+            <div class="swatch__label">
+              <strong>TEDDY</strong>
+              <small>#7F4C32</small>
+            </div>
+          </div>
+
+          <div class="swatch swatch--coral">
+            <div class="swatch__chip"></div>
+            <div class="swatch__label">
+              <strong>CORAL</strong>
+              <small>#D65E3A</small>
+            </div>
+          </div>
+
+          <figcaption class="brandSplit__credit">
+            <span>MAUSAM</span><br /><em>Branding</em>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <!-- Left: Headline + Contact -->
+        <div class="footer-left">
+          <h2 class="footer-kicker">NOT JUST ANY <span>agency</span></h2>
+          <div class="footer-contact">
+            <p>
+              Phone: <a href="tel:+971586404813">+971 58 640 4813</a> |
+              <a href="tel:+971505091969">+971 50 509 1969</a>
+            </p>
+            <p>
+              Email:
+              <a href="mailto:info@blackwoodevents.com"
+                >info@blackwoodevents.com</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Socials + CTA -->
+        <div class="footer-right">
+          <div class="socials">
+            <!-- Instagram -->
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              aria-label="Instagram"
+              class="soc"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="26"
+                height="26"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="3.5"></circle>
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1.2"
+                  fill="currentColor"
+                  stroke="none"
+                ></circle>
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a
+              href="https://linkedin.com/"
+              target="_blank"
+              aria-label="LinkedIn"
+              class="soc"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="26"
+                height="26"
+                fill="currentColor"
+              >
+                <path
+                  d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.5h5v15H0v-15zM8.5 8.5h4.8v2.06h.07c.67-1.2 2.3-2.46 4.73-2.46 5.06 0 5.99 3.33 5.99 7.65V23.5h-5v-6.73c0-1.6-.03-3.66-2.23-3.66-2.23 0-2.57 1.74-2.57 3.54v6.85h-5v-15z"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <a href="#contact" class="btn-outline">WORK WITH US</a>
+        </div>
+      </div>
+
+      <!-- Bottom row: Logo + copyright -->
+      <div class="footer-bottom">
+        <img class="footer-logo" src="/images/BW_Logo_Horizontal_White.png" />
+        <small class="copy">© 2025 by BlackWood</small>
+      </div>
+    </footer>
   </body>
 </html>

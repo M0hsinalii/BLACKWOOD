@@ -286,11 +286,11 @@
   max-width: 56ch;
 }
 h1 {
-    text-align: center;
-    font-size: xx-large;
-    font-style: italic;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+  text-align: center;
+  font-size: xx-large;
+  font-style: italic;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: bold;
 }
 /* =========================
    Responsive Media Queries
@@ -392,25 +392,29 @@ h1 {
   }
 }
 
-
-
 /* ---------- Expertise text (right column) ---------- */
-.expertise { max-width: 46ch; }
-.expertise-intro{
+.expertise {
+  max-width: 46ch;
+}
+.expertise-intro {
   margin: 0 0 14px;
   font-size: 18px;
   line-height: 1.45;
   color: var(--ink);
 }
-.exp-item{ margin: 10px 0 16px; }
-.exp-line{
+.exp-item {
+  margin: 10px 0 16px;
+}
+.exp-line {
   margin: 0 0 6px;
   font-size: 17px;
   line-height: 1.5;
   color: var(--ink);
 }
-.exp-line strong{ font-weight: 700; }
-.exp-desc{
+.exp-line strong {
+  font-weight: 700;
+}
+.exp-desc {
   margin: 0;
   font-size: 15.5px;
   line-height: 1.7;
@@ -421,7 +425,8 @@ h1 {
   text-align: center;
   font-size: clamp(28px, 4vw, 48px); /* responsive sizing */
   font-weight: 700;
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, sans-serif;
   color: var(--ink);
   letter-spacing: 0.5px;
   margin-bottom: 48px;
@@ -439,28 +444,17 @@ h1 {
   border-radius: 2px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 /* ===================== THEME TOKENS ===================== */
-:root{
+:root {
   --ink: #000000;
   --muted: #848696;
   --bg: #f5f5f5;
-  --shadow: 0 20px 40px rgba(0,0,0,.15);
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   --radius: 20px;
 }
 
 /* ===================== SECTION WRAPPER ===================== */
-.team{
+.team {
   background: var(--bg);
   padding: 120px 16px 80px;
   position: relative;
@@ -468,11 +462,12 @@ h1 {
   display: grid;
   place-items: center;
   row-gap: 28px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial,
+    sans-serif;
 }
 
 /* ===================== TITLE ===================== */
-.team__title{
+.team__title {
   position: absolute;
   top: 32px;
   left: 50%;
@@ -483,21 +478,25 @@ h1 {
   letter-spacing: -0.02em;
   white-space: nowrap;
   pointer-events: none;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 30%, rgb(255 255 255 / 0%) 76%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35) 30%,
+    rgb(255 255 255 / 0%) 76%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 /* ===================== CAROUSEL ===================== */
-.team__carousel{
+.team__carousel {
   width: min(1200px, 100%);
   height: 450px;
   position: relative;
   perspective: 1000px;
 }
 
-.team__track{
+.team__track {
   width: 100%;
   height: 100%;
   display: flex;
@@ -505,10 +504,10 @@ h1 {
   align-items: center;
   position: relative;
   transform-style: preserve-3d;
-  transition: transform .8s cubic-bezier(.25,.46,.45,.94);
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.team__card{
+.team__card {
   position: absolute;
   width: 480px;
   height: 380px;
@@ -516,13 +515,15 @@ h1 {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: all .8s cubic-bezier(.25,.46,.45,.94);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
   outline: none;
 }
-.team__card:focus-visible{ box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.35), var(--shadow); }
+.team__card:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.35), var(--shadow);
+}
 
-.team__card img{
+.team__card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -530,38 +531,78 @@ h1 {
 }
 
 /* positions */
-.team__card.center   { z-index: 10; transform: scale(1.1) translateZ(0); }
-.team__card.left-1   { z-index: 5;  transform: translateX(-200px) scale(.9) translateZ(-100px); opacity:.9; }
-.team__card.left-2   { z-index: 1;  transform: translateX(-400px) scale(.8) translateZ(-300px); opacity:.7; }
-.team__card.right-1  { z-index: 5;  transform: translateX(200px)  scale(.9) translateZ(-100px); opacity:.9; }
-.team__card.right-2  { z-index: 1;  transform: translateX(400px)  scale(.8) translateZ(-300px); opacity:.7; }
-.team__card.hidden   { opacity: 0; pointer-events: none; }
+.team__card.center {
+  z-index: 10;
+  transform: scale(1.1) translateZ(0);
+}
+.team__card.left-1 {
+  z-index: 5;
+  transform: translateX(-200px) scale(0.9) translateZ(-100px);
+  opacity: 0.9;
+}
+.team__card.left-2 {
+  z-index: 1;
+  transform: translateX(-400px) scale(0.8) translateZ(-300px);
+  opacity: 0.7;
+}
+.team__card.right-1 {
+  z-index: 5;
+  transform: translateX(200px) scale(0.9) translateZ(-100px);
+  opacity: 0.9;
+}
+.team__card.right-2 {
+  z-index: 1;
+  transform: translateX(400px) scale(0.8) translateZ(-300px);
+  opacity: 0.7;
+}
+.team__card.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
 
-.team__card:not(.center) img{ filter: grayscale(100%); }
+.team__card:not(.center) img {
+  filter: grayscale(100%);
+}
 
 /* arrows */
-.team__arrow{
+.team__arrow {
   position: absolute;
   inset-block-start: 50%;
   translate: 0 -50%;
-  width: 42px; height: 42px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   border: 0;
   background: rgba(0, 0, 0, 0.6);
-  color: #fff; font-size: 1.5rem;
-  display: grid; place-items: center;
+  color: #fff;
+  font-size: 1.5rem;
+  display: grid;
+  place-items: center;
   cursor: pointer;
-  transition: transform .2s ease, background .2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
   z-index: 20;
 }
-.team__arrow:hover{ transform: translateY(-50%) scale(1.08); background: rgba(0,0,0,.8); }
-.team__arrow:active{ transform: translateY(-50%) scale(.98); }
-.team__arrow--left{ left: 18px; padding-right: 2px; }
-.team__arrow--right{ right: 18px; padding-left: 2px; }
+.team__arrow:hover {
+  transform: translateY(-50%) scale(1.08);
+  background: rgba(0, 0, 0, 0.8);
+}
+.team__arrow:active {
+  transform: translateY(-50%) scale(0.98);
+}
+.team__arrow--left {
+  left: 18px;
+  padding-right: 2px;
+}
+.team__arrow--right {
+  right: 18px;
+  padding-left: 2px;
+}
 
 /* member info */
-.team__info{ text-align: center; }
-.team__name{
+.team__info {
+  text-align: center;
+}
+.team__name {
   color: var(--ink);
   font-size: 2.5rem;
   font-weight: 700;
@@ -569,58 +610,119 @@ h1 {
   position: relative;
   display: inline-block;
 }
-.team__name::before, .team__name::after{
-  content:""; position:absolute; top: 100%;
-  width: 100px; height: 2px; background: var(--ink);
+.team__name::before,
+.team__name::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  width: 100px;
+  height: 2px;
+  background: var(--ink);
 }
-.team__name::before{ left: -120px; }
-.team__name::after{ right: -120px; }
-.team__role{
+.team__name::before {
+  left: -120px;
+}
+.team__name::after {
+  right: -120px;
+}
+.team__role {
   color: var(--muted);
-  font-size: 1.5rem; font-weight: 500;
-  text-transform: uppercase; letter-spacing: .1em;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   margin: 0;
 }
 
 /* dots */
-.team__dots{
-  display: flex; justify-content: center; gap: 10px; margin-top: 18px;
+.team__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
 }
-.team__dot{
-  width: 12px; height: 12px; border-radius: 50%;
-  background: rgba(8,42,123,.2); border: 0; cursor: pointer;
-  transition: transform .2s ease, background .2s ease;
+.team__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(8, 42, 123, 0.2);
+  border: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
-.team__dot.is-active{ background: rgb(8,42,123); transform: scale(1.2); }
+.team__dot.is-active {
+  background: rgb(8, 42, 123);
+  transform: scale(1.2);
+}
 
 /* ===================== MEDIA QUERIES ===================== */
-@media (max-width: 1200px){
-  .team__title{ font-size: 6rem; }
+@media (max-width: 1200px) {
+  .team__title {
+    font-size: 6rem;
+  }
 }
 
-@media (max-width: 992px){
-  .team__title{ font-size: 5.2rem; }
+@media (max-width: 992px) {
+  .team__title {
+    font-size: 5.2rem;
+  }
 }
 
-@media (max-width: 768px){
-  .team__title{ font-size: 4.2rem; }
+@media (max-width: 768px) {
+  .team__title {
+    font-size: 4.2rem;
+  }
 
-  .team__card{ width: 200px; height: 280px; }
-  .team__card.left-2 { transform: translateX(-250px) scale(.8) translateZ(-300px); }
-  .team__card.left-1 { transform: translateX(-120px) scale(.9) translateZ(-100px); }
-  .team__card.right-1{ transform: translateX(120px)  scale(.9) translateZ(-100px); }
-  .team__card.right-2{ transform: translateX(250px)  scale(.8) translateZ(-300px); }
+  .team__card {
+    width: 200px;
+    height: 280px;
+  }
+  .team__card.left-2 {
+    transform: translateX(-250px) scale(0.8) translateZ(-300px);
+  }
+  .team__card.left-1 {
+    transform: translateX(-120px) scale(0.9) translateZ(-100px);
+  }
+  .team__card.right-1 {
+    transform: translateX(120px) scale(0.9) translateZ(-100px);
+  }
+  .team__card.right-2 {
+    transform: translateX(250px) scale(0.8) translateZ(-300px);
+  }
 
-  .team__name{ font-size: 2rem; }
-  .team__role{ font-size: 1.2rem; }
-  .team__name::before, .team__name::after{ width: 50px; }
-  .team__name::before{ left: -70px; } .team__name::after{ right: -70px; }
+  .team__name {
+    font-size: 2rem;
+  }
+  .team__role {
+    font-size: 1.2rem;
+  }
+  .team__name::before,
+  .team__name::after {
+    width: 50px;
+  }
+  .team__name::before {
+    left: -70px;
+  }
+  .team__name::after {
+    right: -70px;
+  }
 }
 
-@media (max-width: 480px){
-  .team__title{ font-size: 3.2rem; }
-  .team__carousel{ height: 400px; }
-  .team__card{ width: 280px; height: 250px; }
-  .team__card.left-2 { transform: translateX(-220px) scale(.78) translateZ(-280px); }
-  .team__card.right-2{ transform: translateX(220px)  scale(.78) translateZ(-280px); }
+@media (max-width: 480px) {
+  .team__title {
+    font-size: 3.2rem;
+  }
+  .team__carousel {
+    height: 400px;
+  }
+  .team__card {
+    width: 280px;
+    height: 250px;
+  }
+  .team__card.left-2 {
+    transform: translateX(-220px) scale(0.78) translateZ(-280px);
+  }
+  .team__card.right-2 {
+    transform: translateX(220px) scale(0.78) translateZ(-280px);
+  }
 }

@@ -203,7 +203,6 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 })();
-
 /* ===================== CAROUSEL LOGIC (scoped) ===================== */
 (() => {
   const root = document.getElementById("our-team");

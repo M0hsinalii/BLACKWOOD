@@ -191,7 +191,7 @@
     { name: "PRODUCTION",   role: "BLACKWOOD" },
     { name: "PRODUCTION",     role: "BLACKWOOD" },
     { name: "PRODUCTION",    role: "BLACKWOOD" },
-    { name: "JPRODUCTION",     role: "BLACKWOOD" }
+    { name: "PRODUCTION",     role: "BLACKWOOD" }
   ];
 
   let currentIndex = 0;

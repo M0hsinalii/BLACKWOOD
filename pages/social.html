@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BlackWood</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style/style.css" />
+    <link rel="stylesheet" href="/style/social.css">
+    
+
+    <script src="/js/index.js" defer></script>
+  </head>
+  <body>
+    <!-- Top Navbar (fixed) -->
+    <header id="topbar" class="topbar">
+      <div class="topbar-inner">
+        <input
+          id="nav-toggle"
+          type="checkbox"
+          class="nav-toggle"
+          aria-label="Toggle menu"
+        />
+        <label for="nav-toggle" class="hamburger" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </label>
+
+        <nav class="menu" aria-label="Primary">
+          <a class="active" href="/index.html">Home</a>
+          <a href="/pages/production.html">Production</a>
+          <a href="/pages/Branding.html">Branding</a>
+          <a href="/pages/social.html">Social</a>
+          <a href="/pages/enquire.html">Enquire Us</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Intro">
+      <video
+        id="heroVideo"
+        class="bg-video"
+        src="/images/social.mp4"
+        poster="/images/hero-poster.jpg"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      ></video>
+
+      <a class="hero-logo" href="#" aria-label="BlackWood home">
+        <img src="/images/BW_Logo_Horizontal_White.png" alt="BlackWood logo" />
+      </a>
+
+      <a class="hero-cta" href="/pages/enquire.html">WORK WITH US</a>
+    </section>
+    <!-- ============ SOCIAL SECTION (single image) ============ -->
+    <section class="social-section" id="social">
+      <div class="social-inner">
+        <!-- One combined mockup image -->
+        <div class="mockup-wrap" aria-hidden="true">
+          <img
+            class="phones-img"
+            src="/images/I Will Set Up and Manage GoHighLevel, Klaviyo Email Marketing, and Automation.jpeg"
+            <!--
+            change
+            to
+            your
+            actual
+            path
+            --
+          />
+        </div>
+
+        <!-- Copy -->
+        <div class="social-content">
+          <h2 class="social-title">SOCIAL</h2>
+          <p class="social-text">
+            We don’t just post — we create movements. From scroll-stopping
+            visuals to influencer campaigns and paid strategy, we design social
+            content that drives engagement, grows communities, and brings your
+            brand to life online.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+  </body>
+</html>

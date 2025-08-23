@@ -10,6 +10,159 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/style/style.css" />
+    <style>
+      /* ===== Portfolio Strip – FULL CSS (with media queries) ===== */
+      * {
+        box-sizing: border-box;
+      }
+
+      .workStrip {
+        --bg: #f6efe6; /* same soft beige as your other section */
+        --gutter: 48px; /* space between tiles */
+        --maxw: 1040px; /* content width on desktop */
+        --title: 12px;
+        --tag: 11px;
+        background: var(--bg);
+        padding: 56px 24px 72px;
+      }
+
+      .workStrip__wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--gutter);
+        align-items: start;
+      }
+
+      /* Card */
+      .workCard {
+        margin: 0;
+      }
+      .workCard__link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      /* Image: keep a tall crop similar to the mock */
+      .workCard__media {
+        width: 100%;
+        aspect-ratio: 4 / 5; /* vertical frame; adjust if you like */
+        object-fit: cover;
+        display: block;
+        background: #ddd; /* fallback while loading */
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+      }
+      .workCard__link:hover .workCard__media {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      }
+
+      /* Caption: small, aligned left like your screenshot */
+      .workCard__caption {
+        margin-top: 12px;
+        color: #111;
+        line-height: 1.15;
+        text-align: left;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      }
+      .workCard__title {
+        font-size: var(--title);
+        letter-spacing: 0.06em;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      .workCard__tag {
+        font-size: var(--tag);
+        opacity: 0.75;
+        font-style: italic;
+      }
+
+      /* ====== Responsive: all frames ====== */
+
+      /* >=1440px — very large desktop */
+      @media (min-width: 1440px) {
+        .workStrip {
+          --maxw: 1200px;
+          --gutter: 56px;
+          padding: 72px 32px 88px;
+        }
+      }
+
+      /* 1200–1439px — desktop */
+      @media (max-width: 1439.98px) and (min-width: 1200px) {
+        .workStrip {
+          --maxw: 1120px;
+        }
+      }
+
+      /* 992–1199px — laptop */
+      @media (max-width: 1199.98px) and (min-width: 992px) {
+        .workStrip {
+          --maxw: 980px;
+          --gutter: 40px;
+        }
+      }
+
+      /* 768–991px — tablet landscape: switch to 2 columns */
+      @media (max-width: 991.98px) and (min-width: 768px) {
+        .workStrip {
+          --maxw: 820px;
+          --gutter: 32px;
+          padding: 48px 20px 64px;
+        }
+        .workStrip__wrap {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* 576–767px — tablet portrait / large phones: 2 columns tighter */
+      @media (max-width: 767.98px) and (min-width: 576px) {
+        .workStrip {
+          --maxw: 640px;
+          --gutter: 24px;
+          padding: 44px 16px 56px;
+          --title: 11px;
+          --tag: 10px;
+        }
+        .workStrip__wrap {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* 401–575px — phones: 1 column */
+      @media (max-width: 575.98px) and (min-width: 401px) {
+        .workStrip {
+          --maxw: none;
+          --gutter: 18px;
+          padding: 40px 14px 48px;
+          --title: 11px;
+          --tag: 9.5px;
+        }
+        .workStrip__wrap {
+          grid-template-columns: 1fr;
+        }
+        .workCard__media {
+          aspect-ratio: 4 / 5;
+        }
+      }
+
+      /* <=400px — small phones */
+      @media (max-width: 400px) {
+        .workStrip {
+          --gutter: 16px;
+          padding: 32px 12px 40px;
+          --title: 10.5px;
+          --tag: 9px;
+        }
+        .workStrip__wrap {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
 
     <script src="/js/index.js" defer></script>
   </head>
@@ -66,7 +219,6 @@
           you're starting fresh or reimagining your look, we build foundations
           that last.
         </p>
-        
       </div>
 
       <div class="branding-images">
@@ -85,6 +237,59 @@
           alt="Phone Mockup"
           class="phone"
         />
+      </div>
+    </section>
+
+    <!-- ===== Portfolio Strip (3 tiles) ===== -->
+    <section class="workStrip" aria-label="Selected Work">
+      <div class="workStrip__wrap">
+        <!-- Card 1 -->
+        <figure class="workCard">
+          <a class="workCard__link" href="#">
+            <img
+              class="workCard__media"
+              src="/images/17.webp"
+              <!--
+              replace
+              --
+            />
+          
+          </a>
+          <figcaption class="workCard__caption">
+            <span class="workCard__title">DECOR ONE</span><br />
+            <em class="workCard__tag">Logo Creation</em>
+          </figcaption>
+        </figure>
+
+        <!-- Card 2 -->
+        <figure class="workCard">
+          <a class="workCard__link" href="#">
+            <img class="workCard__media" src="/images/01.webp" <!-- replace -- />
+          
+          </a>
+          <figcaption class="workCard__caption">
+            <span class="workCard__title">LINCOLN</span><br />
+            <em class="workCard__tag">EDM</em>
+          </figcaption>
+        </figure>
+
+        <!-- Card 3 -->
+        <figure class="workCard">
+          <a class="workCard__link" href="#">
+            <img
+              class="workCard__media"
+              src="/images/06.webp"
+              <!--
+              replace
+              --
+            />
+          
+          </a>
+          <figcaption class="workCard__caption">
+            <span class="workCard__title">BANYAN TREE DUBAI</span><br />
+            <em class="workCard__tag">Social Media Brand Lift</em>
+          </figcaption>
+        </figure>
       </div>
     </section>
   </body>

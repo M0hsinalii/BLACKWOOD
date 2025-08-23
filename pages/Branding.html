@@ -307,210 +307,51 @@
       /* ====== Responsive Media Queries (all frames) ====== */
 
       /* >=1440px (very large desktop) */
-      @media (min-width: 1440px) {
-        .brandSplit {
-          --maxw: 1280px;
-          --gap: 72px;
-          --h2: 32px;
-          --sub: 19px;
-          --h3: 19px;
-        }
-        .swatch {
-          right: 24px;
-          width: 168px;
-        }
-        .swatch__chip {
-          height: 124px;
-        }
-        .swatch--teddy {
-          top: 224px;
-        }
-        .swatch--coral {
-          top: 416px;
-        }
-      }
+  
+/* ≥1440px — very large desktop */
+@media (min-width: 1440px){
+  .brandSplit{ --h2: 32px; --sub: 19px; --h3: 19px; --body: 16px; }
+  .brandSplit__text{ max-width: 660px; }
+}
 
-      /* 1200–1439px */
-      @media (max-width: 1439.98px) and (min-width: 1200px) {
-        .brandSplit {
-          --maxw: 1160px;
-        }
-      }
+/* 1200–1439px — desktop (sizes above already work) */
+@media (max-width: 1439.98px) and (min-width: 1200px){
+  .brandSplit{ --h2: 30px; --sub: 18px; --h3: 18px; --body: 15.5px; }
+}
 
-      /* 992–1199px (laptops) */
-      @media (max-width: 1199.98px) and (min-width: 992px) {
-        .brandSplit {
-          --maxw: 980px;
-          --gap: 44px;
-        }
-        .swatch {
-          width: 140px;
-          right: 14px;
-        }
-        .swatch__chip {
-          height: 100px;
-        }
-        .swatch--teddy {
-          top: 188px;
-        }
-        .swatch--coral {
-          top: 344px;
-        }
-      }
+/* 992–1199px — laptops */
+@media (max-width: 1199.98px) and (min-width: 992px){
+  .brandSplit{ --h2: 28px; --sub: 17px; --h3: 17px; --body: 15px; }
+  .brandSplit__text{ max-width: 600px; }
+}
 
-      /* 768–991px (tablet landscape) — stack vertically, center text */
-      @media (max-width: 991.98px) and (min-width: 768px) {
-        .brandSplit {
-          --maxw: 820px;
-          padding: 56px 20px 72px;
-        }
-        .brandSplit__wrap {
-          grid-template-columns: 1fr;
-          gap: 28px;
-        }
-        .brandSplit__text {
-          text-align: center;
-        }
-        .brandPoint__heading,
-        .brandPoint__desc {
-          text-align: center;
-        }
-        .brandSplit__figure {
-          max-width: 560px;
-          margin: 0 auto;
-        }
-        .swatch {
-          right: 10px;
-          width: 136px;
-        }
-        .swatch__chip {
-          height: 96px;
-        }
-        .swatch--teddy {
-          top: 180px;
-        }
-        .swatch--coral {
-          top: 328px;
-        }
-      }
+/* 768–991px — tablet landscape (stack, keep left style) */
+@media (max-width: 991.98px) and (min-width: 768px){
+  .brandSplit{ --h2: 27px; --sub: 17px; --h3: 17px; --body: 15px; }
+  .brandSplit__wrap{ grid-template-columns: 1fr; gap: 28px; }
+  .brandSplit__text{ max-width: 640px; margin: 0 auto; } /* centered block, left text */
+}
 
-      /* 576–767px (tablet portrait / large phones) */
-      @media (max-width: 767.98px) and (min-width: 576px) {
-        .brandSplit {
-          --maxw: 640px;
-          padding: 48px 16px 64px;
-          --h2: 26px;
-          --sub: 17px;
-          --h3: 17px;
-          --body: 15px;
-        }
-        .brandSplit__wrap {
-          grid-template-columns: 1fr;
-          gap: 26px;
-        }
-        .brandSplit__text {
-          text-align: center;
-        }
-        .brandPoint__heading,
-        .brandPoint__desc {
-          text-align: center;
-        }
-        .brandSplit__figure {
-          max-width: 520px;
-          margin: 0 auto;
-        }
-        .swatch {
-          width: 128px;
-          right: 8px;
-        }
-        .swatch__chip {
-          height: 90px;
-        }
-        .swatch--teddy {
-          top: 172px;
-        }
-        .swatch--coral {
-          top: 312px;
-        }
-      }
+/* 576–767px — tablet portrait / large phones */
+@media (max-width: 767.98px) and (min-width: 576px){
+  .brandSplit{ --h2: 26px; --sub: 16px; --h3: 16px; --body: 14.5px; }
+  .brandSplit__wrap{ grid-template-columns: 1fr; gap: 24px; }
+  .brandSplit__text{ max-width: 560px; margin: 0 auto; }
+}
 
-      /* 401–575px (phones) */
-      @media (max-width: 575.98px) and (min-width: 401px) {
-        .brandSplit {
-          padding: 44px 14px 56px;
-          --h2: 24px;
-          --sub: 16px;
-          --h3: 16px;
-          --body: 14.5px;
-        }
-        .brandSplit__wrap {
-          grid-template-columns: 1fr;
-          gap: 22px;
-        }
-        .brandSplit__text {
-          text-align: center;
-        }
-        .brandPoint__heading,
-        .brandPoint__desc {
-          text-align: center;
-        }
-        .brandSplit__figure {
-          max-width: 480px;
-          margin: 0 auto;
-        }
-        .swatch {
-          width: 120px;
-          right: 6px;
-        }
-        .swatch__chip {
-          height: 84px;
-        }
-        .swatch--teddy {
-          top: 166px;
-        }
-        .swatch--coral {
-          top: 300px;
-        }
-      }
+/* 401–575px — phones */
+@media (max-width: 575.98px) and (min-width: 401px){
+  .brandSplit{ --h2: 24px; --sub: 16px; --h3: 16px; --body: 14.5px; }
+  .brandSplit__wrap{ grid-template-columns: 1fr; gap: 22px; }
+  .brandSplit__text{ max-width: 520px; margin: 0 auto; }
+}
 
-      /* <=400px (small phones) */
-      @media (max-width: 400px) {
-        .brandSplit {
-          padding: 36px 12px 48px;
-          --h2: 22px;
-          --sub: 15px;
-          --h3: 15px;
-          --body: 14px;
-        }
-        .brandSplit__wrap {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-        .brandSplit__text {
-          text-align: center;
-        }
-        .brandPoint__heading,
-        .brandPoint__desc {
-          text-align: center;
-        }
-        .brandSplit__figure {
-          max-width: 440px;
-          margin: 0 auto;
-        }
-        .swatch {
-          width: 112px;
-          right: 6px;
-        }
-        .swatch__chip {
-          height: 78px;
-        }
-        .swatch--teddy {
-          top: 158px;
-        }
-        .swatch--coral {
-          top: 288px;
-        }
-      }
+/* ≤400px — small phones */
+@media (max-width: 400px){
+  .brandSplit{ --h2: 22px; --sub: 15px; --h3: 15px; --body: 14px; }
+  .brandSplit__wrap{ grid-template-columns: 1fr; gap: 20px; }
+  .brandSplit__text{ max-width: 480px; margin: 0 auto; }
+}
     </style>
 
     <script src="/js/index.js" defer></script>
@@ -703,31 +544,9 @@
             --
           />
 
-          <!-- Swatches -->
-          <div class="swatch swatch--graphite">
-            <div class="swatch__chip"></div>
-            <div class="swatch__label">
-              <strong>GRAPHITE</strong>
-              <small>#2A201B</small>
-            </div>
-          </div>
+        
 
-          <div class="swatch swatch--teddy">
-            <div class="swatch__chip"></div>
-            <div class="swatch__label">
-              <strong>TEDDY</strong>
-              <small>#7F4C32</small>
-            </div>
-          </div>
-
-          <div class="swatch swatch--coral">
-            <div class="swatch__chip"></div>
-            <div class="swatch__label">
-              <strong>CORAL</strong>
-              <small>#D65E3A</small>
-            </div>
-          </div>
-
+         
           <figcaption class="brandSplit__credit">
             <span>MAUSAM</span><br /><em>Branding</em>
           </figcaption>

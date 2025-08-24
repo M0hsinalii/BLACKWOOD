@@ -212,6 +212,14 @@ body{
 }
 .image-container:hover img{ transform:scale(1.08); filter:brightness(1.1); }
 
+/* =========================
+   BRANDING SECTION (devices)
+   ========================= */
+
+.prod-copy h2{
+  font-family:"Playfair Display",serif; font-style:italic; font-weight:700; letter-spacing:.06em;
+  font-size:clamp(40px,5.4vw,84px); line-height:1.05; margin:0 0 24px;
+}
 
 /* =========================
    FOOTER

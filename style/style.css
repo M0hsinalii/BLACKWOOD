@@ -115,7 +115,7 @@ body{
 .hero__container{ position:relative; width:100%; height:calc(100vh - var(--nav-h)); overflow:hidden; }
 
 .hero-logo{ position:absolute; top:18px; left:18px; z-index:10; text-decoration:none; }
-.hero-logo img{ width:90%; height:40px; filter:drop-shadow(0 6px 28px rgba(0,0,0,.45)); }
+.hero-logo img{ width:auto; height:54px; filter:drop-shadow(0 6px 28px rgba(0,0,0,.45)); }
 
 /* Unified outline button (used across sections) */
 .btn-outline{

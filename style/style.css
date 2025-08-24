@@ -581,7 +581,6 @@ body{
     border-radius:7px;
   }
 }
-
 .production {
   background: #1f1f1f;
   color: #ffffff;
@@ -597,7 +596,7 @@ body{
   align-items: center;
 }
 
-/* Image container with animation */
+/* Image container (no scroll animation) */
 .image-container {
   position: relative;
   overflow: hidden;

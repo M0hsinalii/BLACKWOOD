@@ -582,7 +582,6 @@ body{
   }
 }
 
-
 .production {
   background: #1f1f1f;
   color: #ffffff;
@@ -598,33 +597,26 @@ body{
   align-items: center;
 }
 
-/* Image stack (equal size images + staggered position) */
-.image-stack {
+/* Image container with animation */
+.image-container {
   position: relative;
-  min-height: 500px;
-}
-
-.image-stack img {
-  display: block;
-  width: 320px;          /* SAME SIZE */
-  height: 220px;         /* SAME SIZE */
-  object-fit: cover;
-  border-radius: 6px;
+  overflow: hidden;
+  border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, .35);
 }
 
-/* Top image (upper left) */
-.image-stack .img-top {
-  position: absolute;
-  top: 0;
-  left: 0;
+.image-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform 0.8s ease, filter 0.8s ease;
 }
 
-/* Bottom image (lower right) */
-.image-stack .img-bottom {
-  position: absolute;
-  bottom: 0;
-  left: 120px; /* Push right for stagger effect */
+.image-container:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.1);
 }
 
 /* Copy side */
@@ -663,118 +655,57 @@ body{
   background: #d29b4b;
   color: #1a1a1a;
 }
-/* =======================
-   DESKTOP (≥1025px)
-   Default CSS applies here, keep overlap
-   ======================= */
-/* No query needed — your base styles will handle desktop */
 
 /* =======================
-   IPAD / TABLETS (768px – 1024px)
-   Keep overlap but scale down images
+   TABLETS (768–1024px)
    ======================= */
-/* =========================
-   iPad / Tablets (768–1024)
-   ========================= */
 @media (min-width:768px) and (max-width:1024px){
-  /* keep two columns but give the copy a bit more room */
-  .prod-wrap{
-    grid-template-columns: 1fr 1.05fr;  /* images | text */
-    align-items: start;
-    gap: 48px;                          /* extra gutter so nothing feels cramped */
+  .prod-wrap {
+    grid-template-columns: 1fr 1.05fr;
+    gap: 48px;
   }
-
-  /* image stack sizing + offsets (no intrusion into the copy column) */
-  .image-stack{
-    min-height: 420px;
-  }
-  .image-stack img{
-    width: 240px;       /* smaller so right edge stays inside its column */
-    height: 170px;
-  }
-  .image-stack .img-top{
-    top: 12px;
-    left: 0;
-  }
-  .image-stack .img-bottom{
-    bottom: 36px;
-    left: 60px;         /* reduce push to the right so it won’t overlap text */
-  }
-
-  /* type scale tuned for iPad */
-  .prod-copy{
-    padding-top: 24px;  /* drops the headline down a touch for balance */
-    max-width: 440px;   /* readable line-length */
-  }
-  .prod-copy h2{
-    font-size: 52px;
-    letter-spacing: .05em;
-  }
-  .prod-copy p{
-    font-size: 15.5px;
-    line-height: 1.55;
-  }
-  .prod-btn{
-    margin-top: 8px;    /* clears the lower image visually */
-  }
+  .prod-copy h2 { font-size: 52px; }
+  .prod-copy p { font-size: 15.5px; }
 }
-
 
 /* =======================
    MOBILE (≤767px)
-   Stack images vertically, center text
    ======================= */
 @media (max-width:767px){
-  .prod-wrap{
-    grid-template-columns:1fr;
-    gap:40px;
-    text-align:center;
+  .prod-wrap {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
   }
-  .image-stack{
-    min-height:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:20px;
-  }
-  .image-stack .img-top,
-  .image-stack .img-bottom{
-    position:relative;
-    top:auto; bottom:auto; left:auto; right:auto;
-  }
-  .image-stack img{ width:320px; height:220px; }
-  .prod-copy p{ margin-left:auto; margin-right:auto; }
-  .prod-btn{ width:100%; text-align:center; }
+  .prod-copy p { margin-left:auto; margin-right:auto; }
+  .prod-btn { width: 100%; text-align: center; }
 }
 
 /* =======================
-   GALAXY S9+ (~412px width)
+   GALAXY S9+ (~412px)
    ======================= */
 @media (max-width:412px) and (min-width:391px){
-  .production{ padding:60px 22px; }
-  .image-stack img{ width:300px; height:200px; }
-  .prod-copy h2{ font-size:40px; letter-spacing:.04em; }
-  .prod-copy p{ font-size:15.5px; }
+  .production { padding:60px 22px; }
+  .prod-copy h2 { font-size:40px; }
+  .prod-copy p { font-size:15.5px; }
 }
 
 /* =======================
-   IPHONE 12 PRO (~390px width)
+   IPHONE 12 PRO (~390px)
    ======================= */
 @media (max-width:390px) and (min-width:376px){
-  .production{ padding:56px 20px; }
-  .image-stack img{ width:292px; height:195px; }
-  .prod-copy h2{ font-size:38px; }
-  .prod-copy p{ font-size:15px; }
+  .production { padding:56px 20px; }
+  .prod-copy h2 { font-size:38px; }
+  .prod-copy p { font-size:15px; }
 }
 
 /* =======================
-   IPHONE SE (≤375px width)
+   IPHONE SE (≤375px)
    ======================= */
 @media (max-width:375px){
-  .production{ padding:52px 18px; }
-  .image-stack img{ width:280px; height:186px; }
-  .prod-copy h2{ font-size:34px; }
-  .prod-copy p{ font-size:14.5px; }
+  .production { padding:52px 18px; }
+  .prod-copy h2 { font-size:34px; }
+  .prod-copy p { font-size:14.5px; }
 }
 
 

@@ -126,7 +126,7 @@ body{
 
 /* overlays / logo / CTA */
 .hero-logo{ position:absolute; top:18px; left:18px; z-index:10; text-decoration:none; }
-.hero-logo img{ height:40px; width:90%; display:block; filter:drop-shadow(0 6px 28px rgba(0,0,0,.45)); }
+.hero-logo img{ height:54px; width:100%; display:block; filter:drop-shadow(0 6px 28px rgba(0,0,0,.45)); }
 
 .hero-cta{
   position:absolute; top:18px; right:18px; z-index:10;

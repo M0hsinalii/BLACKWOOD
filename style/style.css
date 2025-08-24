@@ -212,61 +212,6 @@ body{
 }
 .image-container:hover img{ transform:scale(1.08); filter:brightness(1.1); }
 
-/* =========================
-   BRANDING SECTION (devices)
-   ========================= */
-.branding-section{
-  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
-  background:#1f1f1f; color:#fff; padding:60px 5%;
-}
-.prod-copy h2{
-  font-family:"Playfair Display",serif; font-style:italic; font-weight:700; letter-spacing:.06em;
-  font-size:clamp(40px,5.4vw,84px); line-height:1.05; margin:0 0 24px;
-}
-.branding-content{ flex:1 1 400px; max-width:500px; padding-bottom:15%; }
-.branding-content h2{
-  font-family:"Playfair Display",serif; font-style:italic; font-weight:700; letter-spacing:.06em;
-  font-size:clamp(40px,5.4vw,84px); line-height:1.05; margin:0 0 24px;
-}
-.branding-text{ font-family:Inter,sans-serif; font-size:16px; line-height:1.6; margin-bottom:30px; }
-.branding-btn{ display:inline-block; border:1px solid #fff; padding:10px 20px; font-size:14px; text-decoration:none; color:#fff; transition:all .3s ease; }
-.branding-btn:hover{ background:#fff; color:#000; }
-
-.branding-images{ flex:1 1 500px; position:relative; min-height:300px; }
-.branding-images img{ position:absolute; max-width:100%; height:auto; }
-.laptop{ width:75%; top:0; left:25%; z-index:1; }
-.tablet{ width:40%; bottom:0; right:0; z-index:2; }
-.phone{ width:35%; bottom:-10px; left:0; z-index:3; }
-
-/* =========================
-   SOCIAL (single image + copy)
-   ========================= */
-.social-section{ background:var(--bg-dark); color:var(--text-light); padding:96px 6%; }
-.social-inner{
-  max-width:1320px; margin:0 auto; display:grid;
-  grid-template-columns:minmax(420px,1fr) .95fr; align-items:center; gap:64px;
-}
-.mockup-wrap{ position:relative; display:flex; align-items:center; justify-content:center; height:620px; min-height:520px; }
-.phones-img{ max-width:92%; height:auto; filter:drop-shadow(0 22px 32px rgba(0,0,0,.55)); transform:translateX(-2%); }
-.social-content{ max-width:600px; margin-left:auto; }
-.social-title{
-  font-family:Georgia,"Times New Roman",serif; font-weight:600; letter-spacing:.06em;
-  font-size:clamp(42px,5.2vw,84px); line-height:1.05; margin:0 0 20px; color:#fff;
-}
-.social-text{ color:#cfcfcf; font-size:clamp(14px,1.3vw,18px); line-height:1.6; margin:0 0 28px; }
-
-/* =========================
-   COLLABORATIONS (single image)
-   ========================= */
-.collab-section{ background:#282828; color:#fff; padding:90px 6% 110px; }
-.collab-inner{ max-width:1320px; margin:0 auto; }
-.collab-title{
-  margin:0 0 36px; text-align:center; font-weight:600; letter-spacing:.04em; line-height:1.1;
-  font-family:Georgia,"Times New Roman",serif; font-size:clamp(36px,4.6vw,64px);
-}
-.collab-title span{ font-style:italic; font-weight:500; }
-.collab-figure{ margin:0 auto; max-width:1200px; }
-.collab-img{ display:block; width:100%; height:auto; }
 
 /* =========================
    FOOTER

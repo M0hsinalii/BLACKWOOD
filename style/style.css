@@ -271,7 +271,7 @@ body{
 /* =========================
    FOOTER
    ========================= */
-.site-footer{ background:var(--footer-bg); color:var(--text); padding:48px 6% 28px; }
+.site-footer{ background:var(--black); color:var(--text); padding:48px 6% 28px; }
 .footer-inner{
   max-width:1320px; margin:0 auto; display:grid;
   grid-template-columns:1fr auto auto; grid-template-areas:"left nav right";

@@ -596,7 +596,7 @@ body{
   align-items: center;
 }
 
-/* Image container (no scroll animation) */
+/* Image container (no left scroll/slide animation) */
 .image-container {
   position: relative;
   overflow: hidden;
@@ -706,7 +706,6 @@ body{
   .prod-copy h2 { font-size:34px; }
   .prod-copy p { font-size:14.5px; }
 }
-
 
 .branding-section {
   display: flex;

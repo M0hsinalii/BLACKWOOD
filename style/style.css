@@ -137,7 +137,7 @@ body{
 
 .about-copy{
   margin:0 auto 72px; max-width:720px;
-  font-size:18px; line-height:1.6; color:#121212;
+  font-size:15px; line-height:1.6; color:#121212;
 }
 .about-divider{ display:block; width:1px; height:120px; background:rgba(0,0,0,.55); margin:0 auto 56px; }
 .about-mark{ font-weight:900; font-size:44px; letter-spacing:.5px; color:#111; }

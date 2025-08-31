@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BlackWood</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style/style.css" />
+    <style>
+      /* ========== Marketing Solutions — Deluxe Styling (with card spacing) ========== */
+      .solutions {
+        /* Local theme (safe fallbacks if your root vars exist) */
+        --wrap: 1160px;
+        --col-gap: 30px; /* space between columns */
+        --card-gap: 22px; /* space BETWEEN cards in each column */
+        --radius: 16px;
+        --accent1: var(--prod, #d29b4b); /* warm accent */
+        --accent2: #7c5cff; /* cool accent */
+        --ink: #0f0f10;
+        --muted: #5a616b;
+
+        position: relative;
+        padding: 70px 24px 86px;
+        color: var(--ink);
+        background: radial-gradient(
+            1100px 520px at -10% -20%,
+            rgba(124, 92, 255, 0.12),
+            transparent 60%
+          ),
+          radial-gradient(
+            900px 460px at 115% 120%,
+            rgba(210, 155, 75, 0.12),
+            transparent 60%
+          ),
+          #ffffff;
+        overflow: hidden;
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+      }
+
+      /* ambient glow sweep */
+      .solutions::after {
+        content: "";
+        position: absolute;
+        inset: -40% -20% auto -20%;
+        height: 70vh;
+        background: conic-gradient(
+          from 180deg,
+          rgba(124, 92, 255, 0.18),
+          rgba(210, 155, 75, 0.18),
+          rgba(124, 92, 255, 0.18)
+        );
+        filter: blur(90px) saturate(130%);
+        opacity: 0.35;
+        animation: sol-spin 18s linear infinite;
+        pointer-events: none;
+      }
+      @keyframes sol-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .solutions__wrap {
+        max-width: var(--wrap);
+        margin: 0 auto;
+      }
+
+      /* Title with gradient inlay + underline highlight */
+      .solutions__title {
+        --grad: linear-gradient(
+          90deg,
+          var(--ink),
+          #2a2e35 30%,
+          var(--accent2) 65%,
+          var(--accent1)
+        );
+        margin: 0 0 26px;
+        font-weight: 900;
+        font-size: clamp(26px, 3.4vw, 40px);
+        letter-spacing: 0.2px;
+        line-height: 1.1;
+        position: relative;
+        background: var(--grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .solutions__title::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 82px;
+        height: 4px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--accent2), var(--accent1));
+        box-shadow: 0 6px 18px rgba(124, 92, 255, 0.35);
+      }
+
+      /* Responsive grid */
+      .solutions__grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: var(--col-gap);
+      }
+
+      /* NEW: vertical spacing between cards in each column */
+      .solutions__col {
+        display: grid;
+        gap: var(--card-gap); /* ← space between cards */
+      }
+
+      /* Each group as a glass card */
+      .solution-group {
+        position: relative;
+        border-radius: var(--radius);
+        padding: 18px 18px 16px;
+        margin: 0; /* ensure spacing is controlled by --card-gap */
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.78),
+            rgba(255, 255, 255, 0.92)
+          ),
+          radial-gradient(
+            120% 120% at 10% 0%,
+            rgba(124, 92, 255, 0.08),
+            transparent 40%
+          );
+        border: 1px solid rgba(17, 17, 17, 0.06);
+        box-shadow: 0 16px 42px rgba(0, 0, 0, 0.12),
+          0 8px 20px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+        transform: translateZ(0);
+        transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+          box-shadow 0.4s ease, border-color 0.3s ease;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: sol-reveal 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      .solutions__col .solution-group:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .solutions__col .solution-group:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+      .solutions__col .solution-group:nth-child(3) {
+        animation-delay: 0.18s;
+      }
+
+      /* glow accents */
+      .solution-group::before {
+        content: "";
+        position: absolute;
+        inset: -40% -40% auto auto;
+        width: 200px;
+        height: 160px;
+        background: radial-gradient(
+          70px 70px at 70% 40%,
+          rgba(124, 92, 255, 0.18),
+          transparent 70%
+        );
+        filter: blur(14px);
+        pointer-events: none;
+      }
+      .solution-group:hover {
+        transform: translateY(-8px);
+        border-color: rgba(124, 92, 255, 0.22);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.18),
+          0 12px 28px rgba(0, 0, 0, 0.12);
+      }
+
+      /* Headings with left accent bar and sheen on hover */
+      .solution-heading {
+        position: relative;
+        margin: 2px 0 10px;
+        padding-left: 12px;
+        font-weight: 800;
+        font-size: 17px;
+        letter-spacing: 0.2px;
+      }
+      .solution-heading::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.2em;
+        bottom: 0.2em;
+        width: 4px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--accent2), var(--accent1));
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04) inset;
+      }
+      .solution-group:hover .solution-heading {
+        text-shadow: 0 6px 18px rgba(124, 92, 255, 0.15);
+      }
+
+      /* List with premium bullets + subtle connector line */
+      .solution-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        color: var(--muted);
+        font-size: 15.5px;
+        line-height: 1.7;
+      }
+      .solution-list li {
+        position: relative;
+        padding-left: 22px;
+        margin: 6px 0;
+      }
+      .solution-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55em;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 40% 40%,
+          var(--accent2),
+          var(--accent1)
+        );
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.75);
+      }
+      .solution-list li::after {
+        content: "";
+        position: absolute;
+        left: 4.5px;
+        top: calc(0.55em + 10px);
+        width: 1px;
+        height: calc(100% - 1.2em);
+        background: linear-gradient(
+          180deg,
+          rgba(124, 92, 255, 0.25),
+          rgba(210, 155, 75, 0.12),
+          transparent 80%
+        );
+      }
+      .solution-list li:last-child::after {
+        display: none;
+      }
+
+      /* Soft column separators on wide screens */
+      @media (min-width: 1080px) {
+        .solutions__col {
+          position: relative;
+        }
+        .solutions__col + .solutions__col::before {
+          content: "";
+          position: absolute;
+          left: -15px;
+          top: 8px;
+          bottom: 8px;
+          width: 1px;
+          background: linear-gradient(
+            180deg,
+            transparent,
+            rgba(0, 0, 0, 0.08),
+            transparent
+          );
+        }
+      }
+
+      /* Responsiveness */
+      @media (max-width: 991.98px) {
+        .solutions {
+          padding: 56px 20px 72px;
+          --col-gap: 26px;
+          --card-gap: 20px;
+        }
+        .solutions__grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 575.98px) {
+        .solutions {
+          padding: 44px 16px 60px;
+          --col-gap: 22px;
+          --card-gap: 18px;
+        }
+        .solutions__grid {
+          grid-template-columns: 1fr;
+        }
+        .solution-heading {
+          font-size: 16px;
+        }
+        .solution-list {
+          font-size: 14.5px;
+        }
+      }
+
+      /* Accessibility: reduce motion */
+      @media (prefers-reduced-motion: reduce) {
+        .solutions::after {
+          animation: none;
+        }
+        .solution-group {
+          opacity: 1;
+          transform: none;
+          animation: none;
+        }
+      }
+      @keyframes sol-reveal {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+
+    <script src="/js/index.js" defer></script>
+  </head>
+  <body>
+    <!-- Top Navbar (fixed) -->
+    <header id="topbar" class="topbar">
+      <div class="topbar-inner">
+        <input
+          id="nav-toggle"
+          type="checkbox"
+          class="nav-toggle"
+          aria-label="Toggle menu"
+        />
+        <label for="nav-toggle" class="hamburger" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </label>
+
+        <nav class="menu" aria-label="Primary">
+          <a class="active" href="/index.html">Home</a>
+          <a href="/pages/production.html">Production</a>
+          <a href="/pages/Branding.html">Branding</a>
+          <a href="/pages/social.html">Social</a>
+          <a href="/pages/marketing.html">Marketing</a>
+          <a href="/pages/event.html">Events</a>
+          <a href="/pages/enquire.html">Enquire Us</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Intro">
+      <video
+        id="heroVideo"
+        class="bg-video"
+        src="/images/marketing.mp4"
+        poster="/images/hero-poster.jpg"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      ></video>
+
+      <a class="hero-logo" href="#" aria-label="BlackWood home">
+        <img src="/images/BW_Logo_Horizontal_White.png" alt="BlackWood logo" />
+      </a>
+
+      <a class="hero-cta" href="/pages/enquire.html">WORK WITH US</a>
+    </section>
+    <!-- ========== Marketing Solutions Section ========== -->
+    <section class="solutions" aria-labelledby="solutionsTitle">
+      <div class="solutions__wrap">
+        <h2 id="solutionsTitle" class="solutions__title">
+          Marketing Solutions
+        </h2>
+
+        <div class="solutions__grid">
+          <!-- COL 1 -->
+          <div class="solutions__col">
+            <div class="solution-group">
+              <h3 class="solution-heading">
+                Strategic Campaigns &amp; Content
+              </h3>
+              <ul class="solution-list">
+                <li>Creative Strategy</li>
+                <li>Planning and Execution</li>
+                <li>Content Creation &amp; Localisation</li>
+                <li>Film &amp; Video Production</li>
+              </ul>
+            </div>
+
+            <div class="solution-group">
+              <h3 class="solution-heading">Creative Direction &amp; Design</h3>
+              <ul class="solution-list">
+                <li>Branding</li>
+                <li>Design &amp; Art Direction</li>
+                <li>Motion &amp; Animation</li>
+              </ul>
+            </div>
+
+            <div class="solution-group">
+              <h3 class="solution-heading">Experiential Activation</h3>
+              <ul class="solution-list">
+                <li>Guerrilla Stunts</li>
+                <li>Event Amplification</li>
+                <li>Experiential Marketing</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- COL 2 -->
+          <div class="solutions__col">
+            <div class="solution-group">
+              <h3 class="solution-heading">Media Planning &amp; Buying</h3>
+              <ul class="solution-list">
+                <li>Research &amp; Insights</li>
+                <li>Media Strategy</li>
+                <li>Outdoor Media, Radio, &amp; TV</li>
+              </ul>
+            </div>
+
+            <div class="solution-group">
+              <h3 class="solution-heading">
+                Performance &amp; Growth Marketing
+              </h3>
+              <ul class="solution-list">
+                <li>Paid Media Advertising</li>
+                <li>Search Engine Optimisation (SEO)</li>
+                <li>CRM &amp; Email Marketing</li>
+                <li>Reporting &amp; Analytics</li>
+              </ul>
+            </div>
+
+            <div class="solution-group">
+              <h3 class="solution-heading">
+                Social Media, PR &amp; Communications
+              </h3>
+              <ul class="solution-list">
+                <li>Comms Planning &amp; Strategy</li>
+                <li>Content Creation</li>
+                <li>Community Management</li>
+                <li>Influencer Marketing</li>
+                <li>Media Relations &amp; Monitoring</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- COL 3 -->
+          <div class="solutions__col">
+            <div class="solution-group">
+              <h3 class="solution-heading">UX &amp; Interface Design</h3>
+              <ul class="solution-list">
+                <li>Audience Personas</li>
+                <li>User Journey Mapping</li>
+                <li>Prototyping</li>
+                <li>Interface Design</li>
+                <li>Usability Testing</li>
+              </ul>
+            </div>
+
+            <div class="solution-group">
+              <h3 class="solution-heading">
+                Technical Development &amp; Support
+              </h3>
+              <ul class="solution-list">
+                <li>Website Builds</li>
+                <li>Landing Pages &amp; Microsites</li>
+                <li>Technical Consultancy</li>
+                <li>Support &amp; Maintenance</li>
+              </ul>
+            </div>
+
+            <div class="solution-group">
+              <h3 class="solution-heading">
+                Innovation, AI &amp; Emerging Tech
+              </h3>
+              <ul class="solution-list">
+                <li>NFT &amp; Metaverse Strategy</li>
+                <li>Go-to-Market Strategy</li>
+                <li>Growth Marketing &amp; PR</li>
+                <li>Blockchain Consultancy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      <footer class="site-footer">
+      <div class="footer-inner">
+        <!-- Left: Headline + Contact -->
+        <div class="footer-left">
+          <h2 class="footer-kicker">NOT JUST ANY <span>agency</span></h2>
+
+          <div class="footer-contact">
+            <p>
+              Phone: <a href="tel:+971586404813">+971 58 640 4813</a> |
+              <a href="tel:+971505091969">+971 50 509 1969</a>
+            </p>
+            <p>
+              Email:
+              <a href="mailto:info@blackwoodevents.com"
+                >info@blackwoodevents.com</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <!-- Center: Footer Nav -->
+        <nav class="footer-nav" aria-label="Footer">
+          <ul class="footer-menu">
+            <!-- Update hrefs to match your actual page URLs -->
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/pages/production.html">Production</a></li>
+            <li><a href="/pages/Branding.html">Branding</a></li>
+            <li><a href="/pages/social.html">Social</a></li>
+            <li><a href="/pages/social.html">Marketing</a></li>
+            <li><a href="/pages/social.html">Events</a></li>
+            <li><a href="/pages/enquire.html">Enquire Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right: Socials + CTA -->
+        <div class="footer-right">
+          <div class="socials">
+            <!-- Instagram -->
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              aria-label="Instagram"
+              class="soc"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="26"
+                height="26"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="3.5"></circle>
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1.2"
+                  fill="currentColor"
+                  stroke="none"
+                ></circle>
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a
+              href="https://linkedin.com/"
+              target="_blank"
+              aria-label="LinkedIn"
+              class="soc"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="26"
+                height="26"
+                fill="currentColor"
+              >
+                <path
+                  d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.5h5v15H0v-15zM8.5 8.5h4.8v2.06h.07c.67-1.2 2.3-2.46 4.73-2.46 5.06 0 5.99 3.33 5.99 7.65V23.5h-5v-6.73c0-1.6-.03-3.66-2.23-3.66-2.23 0-2.57 1.74-2.57 3.54v6.85h-5v-15z"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <a href="/pages/enquire.html" class="btn-outline">WORK WITH US</a>
+        </div>
+      </div>
+
+      <!-- Bottom row: Logo + copyright -->
+      <div class="footer-bottom">
+        <img
+          class="footer-logo"
+          src="/images/BW_Logo_Horizontal_White.png"
+          alt="BlackWood"
+        />
+        <small class="copy">© 2025 by BlackWood</small>
+      </div>
+    </footer>
+  </body>
+</html>

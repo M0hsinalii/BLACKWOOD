@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BlackWood</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style/style.css" />
+    <style>
+      /* ===== Events & Exhibitions in the UAE (scoped to .ue-*) ===== */
+      .ue-section {
+        /* local theme tokens (safe with your existing CSS) */
+        --wrap: 1160px;
+        --radius: 16px;
+        --gap: 26px;
+        --ink: #101215;
+        --muted: #5a6372;
+        --brand1: #7c5cff; /* cool accent */
+        --brand2: #19c2ff; /* cyan accent */
+        --gold: #d6a85a; /* warm accent */
+
+        color: var(--ink);
+        background: radial-gradient(
+            1200px 520px at -10% -20%,
+            rgba(124, 92, 255, 0.1),
+            transparent 60%
+          ),
+          radial-gradient(
+            1200px 520px at 110% 120%,
+            rgba(214, 168, 90, 0.1),
+            transparent 60%
+          ),
+          #ffffff;
+        padding: 64px 24px 80px;
+        scroll-margin-top: 84px; /* if you have a fixed header */
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* soft ambient glow */
+      .ue-section::after {
+        content: "";
+        position: absolute;
+        inset: -40% -20% auto -20%;
+        height: 66vh;
+        background: conic-gradient(
+          from 180deg,
+          rgba(124, 92, 255, 0.16),
+          rgba(25, 194, 255, 0.14),
+          rgba(214, 168, 90, 0.12),
+          rgba(124, 92, 255, 0.16)
+        );
+        filter: blur(90px) saturate(125%);
+        opacity: 0.35;
+        animation: ue-spin 18s linear infinite;
+        pointer-events: none;
+      }
+      @keyframes ue-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .ue-wrap {
+        max-width: var(--wrap);
+        margin: 0 auto;
+      }
+
+      /* Header */
+      .ue-head {
+        margin-bottom: 18px;
+      }
+      .ue-title {
+        --grad: linear-gradient(
+          90deg,
+          #0f1116,
+          #30394a 40%,
+          var(--brand1) 75%,
+          var(--gold)
+        );
+        margin: 0 0 10px;
+        font-weight: 900;
+        font-size: clamp(28px, 3.8vw, 44px);
+        line-height: 1.06;
+        background: var(--grad);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        letter-spacing: 0.2px;
+        position: relative;
+      }
+      .ue-title::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 86px;
+        height: 4px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--brand2), var(--brand1));
+        box-shadow: 0 6px 18px rgba(124, 92, 255, 0.35);
+      }
+      .ue-intro {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16.5px;
+        line-height: 1.75;
+        max-width: 75ch;
+      }
+
+      /* Category chips */
+      .ue-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin: 18px 0 26px;
+      }
+      .ue-tabs a {
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 12.5px;
+        letter-spacing: 0.08em;
+        padding: 9px 12px;
+        border-radius: 999px;
+        color: #1b2331;
+        background: linear-gradient(
+          180deg,
+          rgba(124, 92, 255, 0.14),
+          rgba(124, 92, 255, 0.1)
+        );
+        border: 1px solid rgba(124, 92, 255, 0.3);
+        transition: transform 0.2s ease, background 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+      .ue-tabs a:hover {
+        transform: translateY(-2px);
+        background: rgba(124, 92, 255, 0.18);
+        box-shadow: 0 8px 20px rgba(124, 92, 255, 0.25);
+      }
+
+      /* Grid */
+      .ue-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--gap);
+      }
+      @media (max-width: 900px) {
+        .ue-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Card */
+      .ue-card {
+        position: relative;
+        padding: 20px 20px 18px;
+        border-radius: var(--radius);
+        background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.86),
+            rgba(255, 255, 255, 0.94)
+          ),
+          radial-gradient(
+            120% 120% at 10% 0%,
+            rgba(124, 92, 255, 0.06),
+            transparent 40%
+          );
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 16px 42px rgba(0, 0, 0, 0.1),
+          0 8px 20px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+        transition: transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+          box-shadow 0.35s ease, border-color 0.25s ease;
+        opacity: 0;
+        transform: translateY(12px);
+        animation: ue-reveal 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+      }
+      .ue-grid .ue-card:nth-child(1) {
+        animation-delay: 0.05s;
+      }
+      .ue-grid .ue-card:nth-child(2) {
+        animation-delay: 0.12s;
+      }
+      .ue-grid .ue-card:nth-child(3) {
+        animation-delay: 0.18s;
+      }
+      .ue-grid .ue-card:nth-child(4) {
+        animation-delay: 0.24s;
+      }
+      .ue-grid .ue-card:nth-child(5) {
+        animation-delay: 0.3s;
+      }
+      .ue-grid .ue-card:nth-child(6) {
+        animation-delay: 0.36s;
+      }
+
+      .ue-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(124, 92, 255, 0.28);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15),
+          0 12px 28px rgba(0, 0, 0, 0.1);
+      }
+
+      /* soft glow */
+      .ue-card::after {
+        content: "";
+        position: absolute;
+        inset: -40% -40% auto auto;
+        width: 200px;
+        height: 160px;
+        background: radial-gradient(
+          70px 70px at 70% 40%,
+          rgba(25, 194, 255, 0.22),
+          transparent 70%
+        );
+        filter: blur(14px);
+        pointer-events: none;
+      }
+
+      /* Highlighted conclusion card */
+      .ue-card--highlight {
+        background: radial-gradient(
+            140% 140% at 0% 0%,
+            rgba(214, 168, 90, 0.16),
+            transparent 40%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.9),
+            rgba(255, 255, 255, 0.98)
+          );
+        border-color: rgba(214, 168, 90, 0.35);
+      }
+
+      /* Card heading with accent bar */
+      .ue-h3 {
+        position: relative;
+        margin: 2px 0 8px;
+        padding-left: 12px;
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 0.2px;
+      }
+      .ue-h3::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.2em;
+        bottom: 0.2em;
+        width: 4px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, var(--brand2), var(--brand1));
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04) inset;
+      }
+
+      .ue-card p {
+        margin: 10px 0 0;
+        color: var(--muted);
+        line-height: 1.75;
+        font-size: 15.8px;
+      }
+
+      /* Back to top */
+      .ue-top {
+        display: inline-block;
+        margin-top: 22px;
+        text-decoration: none;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        font-size: 12.5px;
+        color: #202737;
+        padding: 8px 12px;
+        border-radius: 10px;
+        background: linear-gradient(
+          180deg,
+          rgba(25, 194, 255, 0.12),
+          rgba(25, 194, 255, 0.08)
+        );
+        border: 1px solid rgba(25, 194, 255, 0.28);
+        transition: transform 0.18s ease, background 0.2s ease;
+      }
+      .ue-top:hover {
+        transform: translateY(-2px);
+        background: rgba(25, 194, 255, 0.16);
+      }
+
+      /* Motion accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        .ue-section::after {
+          animation: none;
+        }
+        .ue-card {
+          opacity: 1;
+          transform: none;
+          animation: none;
+        }
+      }
+
+      @keyframes ue-reveal {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+    </style>
+    <script src="/js/index.js" defer></script>
+  </head>
+  <body>
+    <!-- Top Navbar (fixed) -->
+    <header id="topbar" class="topbar">
+      <div class="topbar-inner">
+        <input
+          id="nav-toggle"
+          type="checkbox"
+          class="nav-toggle"
+          aria-label="Toggle menu"
+        />
+        <label for="nav-toggle" class="hamburger" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </label>
+
+        <nav class="menu" aria-label="Primary">
+          <a class="active" href="/index.html">Home</a>
+          <a href="/pages/production.html">Production</a>
+          <a href="/pages/Branding.html">Branding</a>
+          <a href="/pages/social.html">Social</a>
+          <a href="/pages/marketing.html">Marketing</a>
+          <a href="/pages/event.html">Events</a>
+          <a href="/pages/enquire.html">Enquire Us</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" aria-label="Intro">
+      <video
+        id="heroVideo"
+        class="bg-video"
+        src="/images/events.mp4"
+        poster="/images/hero-poster.jpg"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+      ></video>
+
+      <a class="hero-logo" href="#" aria-label="BlackWood home">
+        <img src="/images/BW_Logo_Horizontal_White.png" alt="BlackWood logo" />
+      </a>
+
+      <a class="hero-cta" href="/pages/enquire.html">WORK WITH US</a>
+    </section>
+    <!-- ===== Middle Section: Events & Exhibitions in the UAE ===== -->
+    <section id="events-uae" class="ue-section" aria-labelledby="ueTitle">
+      <div class="ue-wrap">
+        <header class="ue-head">
+          <h2 id="ueTitle" class="ue-title">
+            Events and Exhibitions in the UAE
+          </h2>
+          <p class="ue-intro">
+            The United Arab Emirates (UAE) has established itself as one of the
+            world’s most dynamic destinations for international events and
+            exhibitions. With world-class venues, advanced infrastructure, and a
+            strategic location connecting East and West, the country hosts an
+            impressive calendar of gatherings each year that attract millions of
+            visitors. From business and trade fairs to cultural celebrations and
+            entertainment festivals, events in the UAE are not only a showcase
+            of global excellence but also a reflection of the nation’s ambition
+            and vision.
+          </p>
+        </header>
+
+        <div class="ue-grid">
+          <!-- Business & Trade -->
+          <article id="ue-trade" class="ue-card" aria-labelledby="ue-trade-h">
+            <h3 id="ue-trade-h" class="ue-h3">
+              Business and Trade Exhibitions
+            </h3>
+            <p>
+              At the heart of the UAE’s events scene are its large-scale trade
+              exhibitions, which have positioned the country as a global
+              business hub. Dubai World Trade Centre (DWTC) and Abu Dhabi
+              National Exhibition Centre (ADNEC) regularly host some of the most
+              important events in industries such as healthcare, technology,
+              food, construction, automotive, and beauty.
+            </p>
+            <p>
+              <strong>Arab Health</strong> is the Middle East’s leading
+              healthcare exhibition, bringing together thousands of companies to
+              showcase medical equipment, pharmaceuticals, and cutting-edge
+              healthcare technology. Similarly, <strong>Gulfood</strong>, one of
+              the largest food and beverage trade shows in the world, is a
+              highlight for chefs, restaurateurs, and industry leaders who
+              gather to explore trends, attend culinary masterclasses, and forge
+              business partnerships.
+            </p>
+            <p>
+              Perhaps the most well-known trade exhibition is
+              <strong>GITEX GLOBAL</strong>, one of the world’s largest
+              technology events. This exhibition highlights artificial
+              intelligence, fintech, cloud computing, robotics, and smart city
+              solutions, attracting global tech giants, startups, and investors.
+              Other notable events include <strong>The Big 5 Dubai</strong>,
+              which focuses on construction and infrastructure, and
+              <strong>Automechanika Dubai</strong>, a key platform for the
+              automotive industry.
+            </p>
+            <p>
+              These exhibitions are not just commercial gatherings; they drive
+              innovation, investment, and long-term partnerships, solidifying
+              the UAE’s role as a center for business exchange.
+            </p>
+          </article>
+
+          <!-- Cultural & Creative -->
+          <article
+            id="ue-culture"
+            class="ue-card"
+            aria-labelledby="ue-culture-h"
+          >
+            <h3 id="ue-culture-h" class="ue-h3">
+              Cultural and Creative Events
+            </h3>
+            <p>
+              The UAE is equally celebrated for its cultural and artistic
+              exhibitions. Events like
+              <strong>Art Dubai</strong> bring together galleries, artists, and
+              collectors from across the globe, offering a diverse display of
+              contemporary art, digital installations, and cross-cultural
+              dialogues. Similarly, the
+              <strong>Sharjah International Book Fair</strong> is one of the
+              largest literary events in the world, attracting over
+              2&nbsp;million visitors annually and featuring workshops, author
+              meet-and-greets, and publishing opportunities.
+            </p>
+            <p>
+              The <strong>Sheikh Zayed Festival</strong>, held in Abu Dhabi,
+              celebrates Emirati traditions with pavilions dedicated to
+              heritage, crafts, cuisine, and global cultures. These cultural
+              events not only preserve the rich history of the UAE but also
+              highlight its openness to global creativity.
+            </p>
+          </article>
+
+          <!-- Innovation & Sustainability -->
+          <article
+            id="ue-innovation"
+            class="ue-card"
+            aria-labelledby="ue-innovation-h"
+          >
+            <h3 id="ue-innovation-h" class="ue-h3">
+              Innovation and Sustainability
+            </h3>
+            <p>
+              Innovation is a central theme in many UAE exhibitions.
+              <strong>UAE Innovates</strong>, celebrated annually across all
+              seven emirates, recognizes groundbreaking government projects,
+              startups, and educational achievements in technology and
+              sustainability.
+            </p>
+            <p>
+              Specialized trade shows such as <strong>WETEX</strong> focus on
+              renewable energy, water management, and sustainable solutions,
+              aligning with the country’s commitment to environmental progress.
+              Likewise, <strong>ArabLab</strong> provides a platform for
+              scientists and researchers to showcase laboratory and analytical
+              technologies. These events highlight the UAE’s forward-thinking
+              vision to become a global leader in green energy, smart cities,
+              and advanced sciences.
+            </p>
+          </article>
+
+          <!-- Sports & Entertainment -->
+          <article id="ue-sport" class="ue-card" aria-labelledby="ue-sport-h">
+            <h3 id="ue-sport-h" class="ue-h3">Sports and Entertainment</h3>
+            <p>
+              The UAE has also become a stage for international sports and
+              entertainment spectacles. From the
+              <strong>Dubai Airshow</strong>, where the latest aerospace
+              technology is displayed with impressive aerobatic performances, to
+              the <strong>Asia Cup 2025</strong>, bringing cricket fans
+              together, the nation offers diverse sporting excitement.
+            </p>
+            <p>
+              Abu Dhabi frequently hosts <strong>Formula&nbsp;1</strong> races
+              at Yas Marina Circuit, while events like the
+              <strong>Games of the Future</strong> combine physical sports with
+              digital gaming, offering a futuristic take on competitions.
+              Entertainment festivals, concerts, and lifestyle expos also
+              contribute to the vibrant scene, making the UAE a global
+              destination for both fans and professionals.
+            </p>
+          </article>
+
+          <!-- Heritage & Community -->
+          <article
+            id="ue-heritage"
+            class="ue-card"
+            aria-labelledby="ue-heritage-h"
+          >
+            <h3 id="ue-heritage-h" class="ue-h3">
+              Heritage and Community Celebrations
+            </h3>
+            <p>
+              Beyond business and modern innovation, the UAE celebrates its
+              cultural identity through heritage-based exhibitions. The
+              <strong
+                >Abu Dhabi International Hunting and Equestrian Exhibition
+                (ADIHEX)</strong
+              >
+              combines tradition with modern practices, featuring falconry,
+              equestrian shows, and sustainable hunting equipment. National
+              holidays like <strong>Emirati Women’s Day</strong> and
+              <strong>UAE National Day</strong>
+              include exhibitions and events that honor history, progress, and
+              community achievements.
+            </p>
+          </article>
+
+          <!-- Conclusion -->
+          <article
+            id="ue-conclusion"
+            class="ue-card ue-card--highlight"
+            aria-labelledby="ue-conclusion-h"
+          >
+            <h3 id="ue-conclusion-h" class="ue-h3">Conclusion</h3>
+            <p>
+              The events and exhibitions of the UAE represent much more than
+              gatherings; they are platforms for exchange, innovation, and
+              celebration. Trade exhibitions connect industries, cultural
+              festivals enrich creativity, sustainability events inspire future
+              solutions, and sporting spectacles unite fans worldwide. Together,
+              they reflect the UAE’s role as a crossroads of business, culture,
+              and heritage.
+            </p>
+            <p>
+              By continuously attracting millions of international visitors, the
+              UAE proves its reputation as a global stage where ideas are
+              shared, traditions are celebrated, and the future is shaped.
+            </p>
+          </article>
+        </div>
+
+        <a class="ue-top" href="#events-uae" aria-label="Back to top"
+          >↑ Back to top</a
+        >
+      </div>
+    </section>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <!-- Left: Headline + Contact -->
+        <div class="footer-left">
+          <h2 class="footer-kicker">NOT JUST ANY <span>agency</span></h2>
+
+          <div class="footer-contact">
+            <p>
+              Phone: <a href="tel:+971586404813">+971 58 640 4813</a> |
+              <a href="tel:+971505091969">+971 50 509 1969</a>
+            </p>
+            <p>
+              Email:
+              <a href="mailto:info@blackwoodevents.com"
+                >info@blackwoodevents.com</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <!-- Center: Footer Nav -->
+        <nav class="footer-nav" aria-label="Footer">
+          <ul class="footer-menu">
+            <!-- Update hrefs to match your actual page URLs -->
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/pages/production.html">Production</a></li>
+            <li><a href="/pages/Branding.html">Branding</a></li>
+            <li><a href="/pages/social.html">Social</a></li>
+            <li><a href="/pages/social.html">Marketing</a></li>
+            <li><a href="/pages/social.html">Events</a></li>
+            <li><a href="/pages/enquire.html">Enquire Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right: Socials + CTA -->
+        <div class="footer-right">
+          <div class="socials">
+            <!-- Instagram -->
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              aria-label="Instagram"
+              class="soc"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="26"
+                height="26"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="3.5"></circle>
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1.2"
+                  fill="currentColor"
+                  stroke="none"
+                ></circle>
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a
+              href="https://linkedin.com/"
+              target="_blank"
+              aria-label="LinkedIn"
+              class="soc"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="26"
+                height="26"
+                fill="currentColor"
+              >
+                <path
+                  d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.5h5v15H0v-15zM8.5 8.5h4.8v2.06h.07c.67-1.2 2.3-2.46 4.73-2.46 5.06 0 5.99 3.33 5.99 7.65V23.5h-5v-6.73c0-1.6-.03-3.66-2.23-3.66-2.23 0-2.57 1.74-2.57 3.54v6.85h-5v-15z"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <a href="/pages/enquire.html" class="btn-outline">WORK WITH US</a>
+        </div>
+      </div>
+
+      <!-- Bottom row: Logo + copyright -->
+      <div class="footer-bottom">
+        <img
+          class="footer-logo"
+          src="/images/BW_Logo_Horizontal_White.png"
+          alt="BlackWood"
+        />
+        <small class="copy">© 2025 by BlackWood</small>
+      </div>
+    </footer>
+  </body>
+</html>

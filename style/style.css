@@ -622,3 +622,31 @@ body{
     height: 50vh;
   }
 }
+/* ===== Footer: place footer nav BELOW left-side buttons on DESKTOP ===== */
+@media (min-width: 1024px) {
+  .footer-inner{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "left right"
+      "nav  right";
+    align-items: start;
+    gap: 18px 32px;
+  }
+
+  .footer-left{ grid-area: left; }
+  .footer-nav{
+    grid-area: nav;
+    margin-top: 8px;       /* small space below contact/buttons */
+  }
+  .footer-right{
+    grid-area: right;
+    justify-self: end;
+    align-self: start;
+  }
+
+  /* ensure nav aligns left under the left column content */
+  .footer-menu{
+    justify-content: flex-start;
+  }
+}

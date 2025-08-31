@@ -307,51 +307,114 @@
       /* ====== Responsive Media Queries (all frames) ====== */
 
       /* >=1440px (very large desktop) */
-  
-/* ≥1440px — very large desktop */
-@media (min-width: 1440px){
-  .brandSplit{ --h2: 32px; --sub: 19px; --h3: 19px; --body: 16px; }
-  .brandSplit__text{ max-width: 660px; }
-}
 
-/* 1200–1439px — desktop (sizes above already work) */
-@media (max-width: 1439.98px) and (min-width: 1200px){
-  .brandSplit{ --h2: 30px; --sub: 18px; --h3: 18px; --body: 15.5px; }
-}
+      /* ≥1440px — very large desktop */
+      @media (min-width: 1440px) {
+        .brandSplit {
+          --h2: 32px;
+          --sub: 19px;
+          --h3: 19px;
+          --body: 16px;
+        }
+        .brandSplit__text {
+          max-width: 660px;
+        }
+      }
 
-/* 992–1199px — laptops */
-@media (max-width: 1199.98px) and (min-width: 992px){
-  .brandSplit{ --h2: 28px; --sub: 17px; --h3: 17px; --body: 15px; }
-  .brandSplit__text{ max-width: 600px; }
-}
+      /* 1200–1439px — desktop (sizes above already work) */
+      @media (max-width: 1439.98px) and (min-width: 1200px) {
+        .brandSplit {
+          --h2: 30px;
+          --sub: 18px;
+          --h3: 18px;
+          --body: 15.5px;
+        }
+      }
 
-/* 768–991px — tablet landscape (stack, keep left style) */
-@media (max-width: 991.98px) and (min-width: 768px){
-  .brandSplit{ --h2: 27px; --sub: 17px; --h3: 17px; --body: 15px; }
-  .brandSplit__wrap{ grid-template-columns: 1fr; gap: 28px; }
-  .brandSplit__text{ max-width: 640px; margin: 0 auto; } /* centered block, left text */
-}
+      /* 992–1199px — laptops */
+      @media (max-width: 1199.98px) and (min-width: 992px) {
+        .brandSplit {
+          --h2: 28px;
+          --sub: 17px;
+          --h3: 17px;
+          --body: 15px;
+        }
+        .brandSplit__text {
+          max-width: 600px;
+        }
+      }
 
-/* 576–767px — tablet portrait / large phones */
-@media (max-width: 767.98px) and (min-width: 576px){
-  .brandSplit{ --h2: 26px; --sub: 16px; --h3: 16px; --body: 14.5px; }
-  .brandSplit__wrap{ grid-template-columns: 1fr; gap: 24px; }
-  .brandSplit__text{ max-width: 560px; margin: 0 auto; }
-}
+      /* 768–991px — tablet landscape (stack, keep left style) */
+      @media (max-width: 991.98px) and (min-width: 768px) {
+        .brandSplit {
+          --h2: 27px;
+          --sub: 17px;
+          --h3: 17px;
+          --body: 15px;
+        }
+        .brandSplit__wrap {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .brandSplit__text {
+          max-width: 640px;
+          margin: 0 auto;
+        } /* centered block, left text */
+      }
 
-/* 401–575px — phones */
-@media (max-width: 575.98px) and (min-width: 401px){
-  .brandSplit{ --h2: 24px; --sub: 16px; --h3: 16px; --body: 14.5px; }
-  .brandSplit__wrap{ grid-template-columns: 1fr; gap: 22px; }
-  .brandSplit__text{ max-width: 520px; margin: 0 auto; }
-}
+      /* 576–767px — tablet portrait / large phones */
+      @media (max-width: 767.98px) and (min-width: 576px) {
+        .brandSplit {
+          --h2: 26px;
+          --sub: 16px;
+          --h3: 16px;
+          --body: 14.5px;
+        }
+        .brandSplit__wrap {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .brandSplit__text {
+          max-width: 560px;
+          margin: 0 auto;
+        }
+      }
 
-/* ≤400px — small phones */
-@media (max-width: 400px){
-  .brandSplit{ --h2: 22px; --sub: 15px; --h3: 15px; --body: 14px; }
-  .brandSplit__wrap{ grid-template-columns: 1fr; gap: 20px; }
-  .brandSplit__text{ max-width: 480px; margin: 0 auto; }
-}
+      /* 401–575px — phones */
+      @media (max-width: 575.98px) and (min-width: 401px) {
+        .brandSplit {
+          --h2: 24px;
+          --sub: 16px;
+          --h3: 16px;
+          --body: 14.5px;
+        }
+        .brandSplit__wrap {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+        .brandSplit__text {
+          max-width: 520px;
+          margin: 0 auto;
+        }
+      }
+
+      /* ≤400px — small phones */
+      @media (max-width: 400px) {
+        .brandSplit {
+          --h2: 22px;
+          --sub: 15px;
+          --h3: 15px;
+          --body: 14px;
+        }
+        .brandSplit__wrap {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .brandSplit__text {
+          max-width: 480px;
+          margin: 0 auto;
+        }
+      }
     </style>
 
     <script src="/js/index.js" defer></script>
@@ -375,6 +438,8 @@
           <a href="/pages/production.html">Production</a>
           <a href="/pages/Branding.html">Branding</a>
           <a href="/pages/social.html">Social</a>
+          <a href="/pages/social.html">Marketing</a>
+          <a href="/pages/social.html">Events</a>
           <a href="/pages/enquire.html">Enquire Us</a>
         </nav>
       </div>
@@ -400,7 +465,6 @@
       <a class="hero-cta" href="/pages/enquire.html">WORK WITH US</a>
     </section>
 
- 
     <section class="production">
       <div class="prod-wrap">
         <!-- Left: One image with animation -->
@@ -419,7 +483,6 @@
             deeply. Whether you're starting fresh or reimagining your look, we
             build foundations that last.
           </p>
-          
         </div>
       </div>
     </section>
@@ -447,13 +510,7 @@
         <!-- Card 2 -->
         <figure class="workCard">
           <a class="workCard__link" href="#">
-            <img
-              class="workCard__media"
-              src="/images/01.jpg"
-              <!--
-              replace
-              --
-            />
+            <img class="workCard__media" src="/images/01.jpg" <!-- replace -- />
           </a>
           <figcaption class="workCard__caption">
             <span class="workCard__title">GOOD LOOK</span><br />
@@ -538,9 +595,6 @@
             --
           />
 
-        
-
-         
           <figcaption class="brandSplit__credit">
             <span>Elegancy</span><br /><em> Boutique</em>
           </figcaption>
@@ -549,65 +603,102 @@
     </section>
 
     <!-- ============ FOOTER ============ -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <!-- Left: Headline + Contact -->
-    <div class="footer-left">
-      <h2 class="footer-kicker">NOT JUST ANY <span>agency</span></h2>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <!-- Left: Headline + Contact -->
+        <div class="footer-left">
+          <h2 class="footer-kicker">NOT JUST ANY <span>agency</span></h2>
 
-      <div class="footer-contact">
-        <p>
-          Phone: <a href="tel:+971586404813">+971 58 640 4813</a> |
-          <a href="tel:+971505091969">+971 50 509 1969</a>
-        </p>
-        <p>
-          Email:
-          <a href="mailto:info@blackwoodevents.com">info@blackwoodevents.com</a>
-        </p>
+          <div class="footer-contact">
+            <p>
+              Phone: <a href="tel:+971586404813">+971 58 640 4813</a> |
+              <a href="tel:+971505091969">+971 50 509 1969</a>
+            </p>
+            <p>
+              Email:
+              <a href="mailto:info@blackwoodevents.com"
+                >info@blackwoodevents.com</a
+              >
+            </p>
+          </div>
+        </div>
+
+        <!-- Center: Footer Nav -->
+        <nav class="footer-nav" aria-label="Footer">
+          <ul class="footer-menu">
+            <!-- Update hrefs to match your actual page URLs -->
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/pages/production.html">Production</a></li>
+            <li><a href="/pages/Branding.html">Branding</a></li>
+            <li><a href="/pages/social.html">Social</a></li>
+            <li><a href="/pages/social.html">Marketing</a></li>
+            <li><a href="/pages/social.html">Events</a></li>
+            <li><a href="/pages/enquire.html">Enquire Us</a></li>
+          </ul>
+        </nav>
+
+        <!-- Right: Socials + CTA -->
+        <div class="footer-right">
+          <div class="socials">
+            <!-- Instagram -->
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              aria-label="Instagram"
+              class="soc"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="26"
+                height="26"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.6"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="3.5"></circle>
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="1.2"
+                  fill="currentColor"
+                  stroke="none"
+                ></circle>
+              </svg>
+            </a>
+            <!-- LinkedIn -->
+            <a
+              href="https://linkedin.com/"
+              target="_blank"
+              aria-label="LinkedIn"
+              class="soc"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="26"
+                height="26"
+                fill="currentColor"
+              >
+                <path
+                  d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.5h5v15H0v-15zM8.5 8.5h4.8v2.06h.07c.67-1.2 2.3-2.46 4.73-2.46 5.06 0 5.99 3.33 5.99 7.65V23.5h-5v-6.73c0-1.6-.03-3.66-2.23-3.66-2.23 0-2.57 1.74-2.57 3.54v6.85h-5v-15z"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <a href="/pages/enquire.html" class="btn-outline">WORK WITH US</a>
+        </div>
       </div>
-    </div>
 
-    <!-- Center: Footer Nav -->
-    <nav class="footer-nav" aria-label="Footer">
-      <ul class="footer-menu">
-        <!-- Update hrefs to match your actual page URLs -->
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/pages/production.html">Production</a></li>
-        <li><a href="/pages/Branding.html">Branding</a></li>
-        <li><a href="/pages/social.html">Social</a></li>
-        <li><a href="/pages/marketing.html">Marketing</a></li>
-        <li><a href="/pages/enquire.html">Enquire Us</a></li>
-      </ul>
-    </nav>
-
-    <!-- Right: Socials + CTA -->
-    <div class="footer-right">
-      <div class="socials">
-        <!-- Instagram -->
-        <a href="https://instagram.com/" target="_blank" aria-label="Instagram" class="soc">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6">
-            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-            <circle cx="12" cy="12" r="3.5"></circle>
-            <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"></circle>
-          </svg>
-        </a>
-        <!-- LinkedIn -->
-        <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn" class="soc">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
-            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8.5h5v15H0v-15zM8.5 8.5h4.8v2.06h.07c.67-1.2 2.3-2.46 4.73-2.46 5.06 0 5.99 3.33 5.99 7.65V23.5h-5v-6.73c0-1.6-.03-3.66-2.23-3.66-2.23 0-2.57 1.74-2.57 3.54v6.85h-5v-15z"/>
-          </svg>
-        </a>
+      <!-- Bottom row: Logo + copyright -->
+      <div class="footer-bottom">
+        <img
+          class="footer-logo"
+          src="/images/BW_Logo_Horizontal_White.png"
+          alt="BlackWood"
+        />
+        <small class="copy">© 2025 by BlackWood</small>
       </div>
-
-      <a href="/pages/enquire.html" class="btn-outline">WORK WITH US</a>
-    </div>
-  </div>
-
-  <!-- Bottom row: Logo + copyright -->
-  <div class="footer-bottom">
-    <img class="footer-logo" src="/images/BW_Logo_Horizontal_White.png" alt="BlackWood" />
-    <small class="copy">© 2025 by BlackWood</small>
-  </div>
-</footer>
+    </footer>
   </body>
 </html>
